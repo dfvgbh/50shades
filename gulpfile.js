@@ -59,6 +59,12 @@ gulp.task('fonts', function() {
   .pipe(gulp.dest(dist + '/fonts'));
 });
 
+// copy db
+gulp.task('db', function() {
+  return gulp.src('./app/db/**/*')
+  .pipe(gulp.dest(dist + '/db'));
+});
+
 // clean dist folder
 gulp.task('clear-dist', function() {
   return del.sync(dist + '/*');
@@ -77,7 +83,7 @@ gulp.task('useref', function(){
 // build
 gulp.task('build', function (callback) {
   runSequence(['clear-dist', 'clear-cache'], 
-    ['sass', 'useref', 'imagemin', 'fonts'],
+    ['sass', 'useref', 'imagemin', 'fonts', 'db'],
     callback
   );
 });

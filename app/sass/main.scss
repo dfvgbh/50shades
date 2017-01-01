@@ -1,5 +1,14 @@
 @import 'default-skin';
+@import 'normalize';
 
 body {
+  font-family: Verdana, Arial;
   background-color: $color-forest-green;
+
+  .navbar {
+    background-color: $color-tomato;
+    height: 48px;
+    width: 100%;
+    position: fixed;
+  }
 }
