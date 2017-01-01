@@ -1,14 +1,16 @@
-@import 'default-skin';
 @import 'normalize';
+@import 'mixins';
+@import 'default-skin';
 
 body {
   font-family: Verdana, Arial;
   background-color: $color-forest-green;
+}
 
-  .navbar {
-    background-color: $color-tomato;
-    height: 48px;
-    width: 100%;
-    position: fixed;
-  }
+#top-navbar {
+  background-color: $color-tomato;
+  height: 48px;
+  width: 100%;
+  position: fixed;
+  @include opacity(0.8);
 }

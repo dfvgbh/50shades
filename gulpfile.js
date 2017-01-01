@@ -31,7 +31,7 @@ gulp.task('browser-sync', function() {
 gulp.task('sass', function() {
   return gulp.src(sassFiles)
   .pipe(sass())
-  .pipe(autoprefixer(['last 10 versions', '> 1%', 'ie >= 8'], { cascade: true }))
+  .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie >= 8'], { cascade: true }))
   .pipe(gulp.dest('./app/css'))
   .pipe(browserSync.reload({ stream: true }));
 });
@@ -83,7 +83,8 @@ gulp.task('useref', function(){
 // build
 gulp.task('build', function (callback) {
   runSequence(['clear-dist', 'clear-cache'], 
-    ['sass', 'useref', 'imagemin', 'fonts', 'db'],
+    'sass',
+    ['useref', 'imagemin', 'fonts', 'db'],
     callback
   );
 });

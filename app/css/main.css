@@ -408,8 +408,11 @@ template {
 body {
   font-family: Verdana, Arial;
   background-color: forestgreen; }
-  body .navbar {
-    background-color: tomato;
-    height: 48px;
-    width: 100%;
-    position: fixed; }
+
+#top-navbar {
+  background-color: tomato;
+  height: 48px;
+  width: 100%;
+  position: fixed;
+  opacity: 0.8;
+  filter: alpha(opacity=80); }
