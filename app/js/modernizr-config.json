@@ -1,0 +1,10 @@
+{
+  "minify": true,
+  "options": [
+    "html5shiv",
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/css/opacity"
+  ]
+}
