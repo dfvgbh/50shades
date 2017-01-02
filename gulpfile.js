@@ -30,7 +30,7 @@ gulp.task('browser-sync', function() {
 // compile sass
 gulp.task('sass', function() {
   return gulp.src(sassFiles)
-  .pipe(sass())
+  .pipe(sass().on('error', sass.logError))
   .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie >= 8'], { cascade: true }))
   .pipe(gulp.dest('./app/css'))
   .pipe(browserSync.reload({ stream: true }));

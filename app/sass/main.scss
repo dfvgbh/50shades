@@ -4,13 +4,68 @@
 
 body {
   font-family: Verdana, Arial;
-  background-color: $color-forest-green;
+  background-color: $main-color;
+}
+
+// opacity support for old IE
+.no-rgba #top-navbar {
+    filter: alpha(opacity=80);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    background-color: rgb(255, 255, 255);
 }
 
 #top-navbar {
-  background-color: $color-tomato;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  padding: 5px 15px;
   height: 48px;
   width: 100%;
   position: fixed;
-  @include opacity(0.8);
+
+  ul {
+    list-style: none;
+    position: relative;
+    float: right;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+
+      &:hover > ul {
+        display: block;
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 32px;
+        padding: 0 15px;
+        color: $text-color;
+
+        &:hover {
+          color: lighten($text-color, 25%);
+        }
+      }
+
+      ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        padding: 0;
+
+        li {
+          float: left;
+          width: 200px;
+        }
+      }
+    }
+  }
 }

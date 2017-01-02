@@ -1,10 +1,3 @@
-// Opacity mixin for IE8+
-@mixin opacity($opacity) {
-  opacity: $opacity;
-  $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie);
-}
-
 %clearfix {
   *zoom: 1; // For IE 6/7
   &:before, &:after {

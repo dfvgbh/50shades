@@ -407,12 +407,51 @@ template {
 
 body {
   font-family: Verdana, Arial;
-  background-color: forestgreen; }
+  background-color: tomato; }
+
+.no-rgba #top-navbar {
+  filter: alpha(opacity=80);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  background-color: white; }
 
 #top-navbar {
-  background-color: tomato;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px 15px;
   height: 48px;
   width: 100%;
-  position: fixed;
-  opacity: 0.8;
-  filter: alpha(opacity=80); }
+  position: fixed; }
+  #top-navbar ul {
+    list-style: none;
+    position: relative;
+    float: right;
+    margin: 0;
+    padding: 0; }
+    #top-navbar ul li {
+      position: relative;
+      display: inline-block;
+      margin: 0;
+      padding: 0; }
+      #top-navbar ul li:hover > ul {
+        display: block; }
+      #top-navbar ul li a {
+        display: block;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 32px;
+        padding: 0 15px;
+        color: #333; }
+        #top-navbar ul li a:hover {
+          color: #737373; }
+      #top-navbar ul li ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        padding: 0; }
+        #top-navbar ul li ul li {
+          float: left;
+          width: 200px; }

@@ -5,6 +5,6 @@
     "setClasses"
   ],
   "feature-detects": [
-    "test/css/opacity"
+    "test/css/rgba"
   ]
 }
