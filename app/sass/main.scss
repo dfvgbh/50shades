@@ -1,71 +1,109 @@
 @import 'normalize';
 @import 'mixins';
 @import 'default-skin';
+@import 'my-slider';
 
 body {
   font-family: Verdana, Arial;
-  background-color: $main-color;
-}
-
-// opacity support for old IE
-.no-rgba #top-navbar {
-    filter: alpha(opacity=80);
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-    background-color: rgb(255, 255, 255);
 }
 
 #top-navbar {
-  background-color: rgba(255, 255, 255, 0.8);
-  box-sizing: border-box;
-  padding: 5px 15px;
-  height: 48px;
-  width: 100%;
-  position: fixed;
+  position: relative;
 
-  ul {
-    list-style: none;
-    position: relative;
-    float: right;
-    margin: 0;
-    padding: 0;
+  #nav-wrapper {
+    background-color: rgba(0, 0, 0, 1);
+    box-sizing: border-box;
+    padding: 5px 15px;
+    height: 48px;
+    width: 100%;
+    z-index: 9999;
+    position: fixed;
 
-    li {
-      position: relative;
-      display: inline-block;
+    ul {
+      list-style: none;
+      float: right;
       margin: 0;
       padding: 0;
+      display: block;
 
-      &:hover > ul {
-        display: block;
-      }
-
-      a {
-        display: block;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 32px;
-        padding: 0 15px;
-        color: $text-color;
-
-        &:hover {
-          color: lighten($text-color, 25%);
-        }
-      }
-
-      ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #fff;
+      li {
+        position: relative;
+        display: inline-block;
+        margin: 0;
         padding: 0;
 
-        li {
-          float: left;
-          width: 200px;
+        &:hover > ul {
+          display: block;
+        }
+
+        a {
+          display: block;
+          height: 100%;
+          width: 100%;
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 50px;
+          padding: 0 15px;
+          color: #eee;
+
+          &:hover {
+            color: darken(#eee, 10%);
+          }
+        }
+
+        ul {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: #fff;
+          padding: 0;
+          margin-top: -10px;
+
+          li {
+            float: left;
+            width: 200px;
+
+            a {
+              color: $text-color;
+            }
+          }
         }
       }
     }
   }
+}
+
+// opacity support for old IE
+.no-rgba #top-navbar {
+    filter: alpha(opacity=0);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    background-color: rgb(255, 255, 255);
+}
+
+// .my-slider {
+//   background: url('../images/sakura.jpg') no-repeat center center;
+//   filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/sakura.jpg', sizingMethod='scale');
+//   -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/sakura.jpg', sizingMethod='scale')";
+//   background-size: cover;
+//   margin: 0;
+//   padding: 0;
+//   height: 500px;
+
+//   #info-container {
+//     text-align: center;
+//     padding: 100px 0;
+
+//     #main-title, #main-description {
+//       margin-top: 0;
+//       color: #fff;
+//     }
+//   }
+// }
+
+.icon {
+  width: 150px;
+  height: 150px;
+  background: #eee;
 }

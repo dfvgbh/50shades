@@ -10,7 +10,8 @@ var gulp         = require('gulp'),
     pngquant     = require('imagemin-pngquant'),
     cache        = require('gulp-cache'),
     del          = require('del'),
-    runSequence  = require('run-sequence');
+    runSequence  = require('run-sequence'),
+    svgSprite    = require('gulp-svg-sprite');
 
 var dist        = './dist',
     sassFiles   = './app/sass/**/*.+(sass|scss)',
@@ -79,6 +80,26 @@ gulp.task('useref', function(){
     .pipe(gulpIf('*.css', cssnano()))
     .pipe(gulp.dest('dist'));
 });
+
+// Basic configuration example 
+config          = {
+    mode        : {
+        view      : {     // Activate the «view» mode 
+            bust    : false,
+            render    : {
+                scss  : true    // Activate Sass output (with default options) 
+            }
+        },
+        symbol      : true    // Activate the «symbol» mode 
+    }
+};
+ 
+gulp.task('svg-sprite', function() {
+  return gulp.src('./app/images/svg/*.svg')
+    .pipe(svgSprite(config))
+    .pipe(gulp.dest('./app/images/sprite'));
+});
+
 
 // build
 gulp.task('build', function (callback) {

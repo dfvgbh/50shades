@@ -15,23 +15,62 @@
   <!-- endbuild -->
 </head>
 <body>
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<symbol viewBox="0 0 150 150" id="angle-left"><path d="M1203 544q0 13-10 23L800 960l393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10L631 983q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></symbol>
+
+<symbol viewBox="0 0 150 150" id="angle-right"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></symbol>
+
+<symbol viewBox="0 0 150 150" id="search"><path d="M1216 832q0-185-131.5-316.5T768 384 451.5 515.5 320 832t131.5 316.5T768 1280t316.5-131.5T1216 832zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225T64 832t55.5-273.5 150-225 225-150T768 128t273.5 55.5 225 150 150 225T1472 832q0 220-124 399l343 343q37 37 37 90z"/></symbol>
+
+  <symbol id="fish" viewBox="0 26 100 48">
+    <path d="M98.5,47.5C96.5,45.5,81,35,62,35c-2.1,0-4.2,0.1-6.2,0.3L39,26c0,4.5,1.3,9,2.4,12.1C31.7,40.7,23.3,44,16,44L0,34
+    c0,8,4,16,4,16s-4,8-4,16l16-10c7.3,0,15.7,3.3,25.4,5.9C40.3,65,39,69.5,39,74l16.8-9.3c2,0.2,4.1,0.3,6.2,0.3
+    c19,0,34.5-10.5,36.5-12.5S100.5,49.5,98.5,47.5z M85.5,50c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5
+    C88,48.9,86.9,50,85.5,50z"/>  
+  </symbol>
+</svg>
+
   <nav id="top-navbar">
-    <ul>
-      <li><a href="#">Menu1</a>
-        <ul>
-          <li><a href="#">MenuS1</a></li>
-          <li><a href="#">MenuS2</a></li>
-          <li><a href="#">MenuS3</a></li>
-          <li><a href="#">MenuS4</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Menu2</a></li>
-      <li><a href="#">Menu3</a></li>
-      <li><a href="#">Menu4</a></li>
-    </ul>
+    <!-- Wrapper for IE8 compability (position fixed + z-index) -->
+    <div id="nav-wrapper">
+      <ul>
+        <li><a href="#">Menu1</a>
+          <ul>
+            <li><a href="#">MenuS1</a></li>
+            <li><a href="#">MenuS2</a></li>
+            <li><a href="#">MenuS3</a></li>
+            <li><a href="#">MenuS4</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Menu2</a></li>
+        <li><a href="#">Menu3</a></li>
+        <li><a href="#">Menu4</a></li>
+      </ul>
+    </div>
   </nav>
-  <header>header</header>
+  <header class="my-slider">
+    <div><img src="./images/1.jpg" alt=""></div>
+    <div><img src="./images/2.jpg" alt=""></div>
+    <div><img src="./images/3.jpg" alt=""></div>
+
+
+<!--     <div id="info-container">
+      <hgroup>
+        <h1 id="main-title">50 SHADES</h1>
+        <h2 id="main-description">lollol zazaza</h2>
+      </hgroup>
+      <div class="search">
+        <form action="/" >
+          <input type="text">          
+        </form>
+      </div>
+    </div> -->
+  </header>
+    <svg class="icon"><use xlink:href="#fish" /></svg>
   <main>
+
+
     <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nam alias magni ipsa praesentium error? Commodi dolor porro velit, quo quidem atque dignissimos! Neque molestias aliquam totam perferendis omnis, autem!</article>
     <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis laudantium nulla dolorum accusamus, sapiente repellendus molestiae quibusdam necessitatibus iste nihil ex, voluptatem dolorem in obcaecati veritatis perspiciatis ab ducimus atque!</article>
     <article>Voluptate, cum distinctio quasi quas! Omnis, expedita, eum! Ex delectus, eum officiis ea. Quibusdam quisquam beatae dolor doloribus eos id. Non provident iste, delectus reprehenderit at libero explicabo ad saepe!</article>
@@ -69,11 +108,11 @@
 
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
   <!-- build:js js/main.min.js -->
   <script src="./js/main.js"></script>
-  <script src="./js/menu.js"></script>
+  <script src="./js/mySlider.js"></script>
   <!-- endbuild -->
 </body>
 </html>
