@@ -445,6 +445,26 @@ template {
   .my-slider .controll-next {
     right: 0; }
 
+.no-inlinesvg .controll-next, .no-inlinesvg .controll-prev {
+  font-size: 10px; }
+
+.no-inlinesvg .controll-prev:before, .no-inlinesvg .controll-next:before {
+  content: ' ';
+  vertical-align: middle;
+  display: inline-block;
+  background: url("../images/sprite.png") no-repeat;
+  background-size: 12em 36em; }
+
+.no-inlinesvg .controll-next:before {
+  background-position: 0em -12em;
+  width: 12em;
+  height: 12em; }
+
+.no-inlinesvg .controll-prev:before {
+  background-position: 0em 0em;
+  width: 12em;
+  height: 12em; }
+
 body {
   font-family: Verdana, Arial;
   color: #333; }
@@ -507,6 +527,10 @@ body {
 #info-container {
   text-align: center;
   padding: 100px 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   position: relative;
   z-index: 1000; }
   #info-container #main-title, #info-container #main-description {

@@ -17,8 +17,16 @@ console, $
     var item = items.eq(currentIndex);
     // negative values are supported
     var prev = items.eq(prevIndex); 
-    prev.fadeOut(fadeTime);
-    item.fadeIn(fadeTime);
+    prev.fadeOut(fadeTime,  function(){
+      if (!$.support.opacity) {
+        this.style.removeAttribute('filter'); // improve IE performance
+      }
+    });
+    item.fadeIn(fadeTime,  function(){
+      if (!$.support.opacity) {
+        this.style.removeAttribute('filter'); // improve IE performance
+      }
+    });
   }
 
   function autoSlide() {
