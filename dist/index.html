@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>50 Shades</title>
 
   <!-- Building with 'gulp-useref' -->
@@ -11,28 +12,31 @@
   <script src="js/modernizr.min.js"></script>
 </head>
 <body>
+<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none"><symbol viewBox="0 0 1792 1792" id="angle-left"><path d="M1203 544q0 13-10 23L800 960l393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10L631 983q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></symbol><symbol viewBox="0 0 1792 1792" id="angle-right"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></symbol><symbol viewBox="0 0 1792 1792" id="search"><path d="M1216 832q0-185-131.5-316.5T768 384 451.5 515.5 320 832t131.5 316.5T768 1280t316.5-131.5T1216 832zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225T64 832t55.5-273.5 150-225 225-150T768 128t273.5 55.5 225 150 150 225T1472 832q0 220-124 399l343 343q37 37 37 90z"/></symbol></svg>
+
   <nav id="top-navbar">
-    <ul>
-      <li><a href="#">Menu1</a>
-        <ul>
-          <li><a href="#">MenuS1</a></li>
-          <li><a href="#">MenuS2</a></li>
-          <li><a href="#">MenuS3</a></li>
-          <li><a href="#">MenuS4</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Menu2</a></li>
-      <li><a href="#">Menu3</a></li>
-      <li><a href="#">Menu4</a></li>
-    </ul>
+    <!-- Wrapper for IE8 compatibility (position fixed + z-index) -->
+    <div id="nav-wrapper">
+      <ul>
+        <li><a href="#">Menu1</a>
+          <ul>
+            <li><a href="#">MenuS1</a></li>
+            <li><a href="#">MenuS2</a></li>
+            <li><a href="#">MenuS3</a></li>
+            <li><a href="#">MenuS4</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Menu2</a></li>
+        <li><a href="#">Menu3</a></li>
+        <li><a href="#">Menu4</a></li>
+      </ul>
+    </div>
   </nav>
-  <header class="my-slider">
-    <div><img src="./images/1.jpg" alt=""></div>
-    <div><img src="./images/2.jpg" alt=""></div>
-    <div><img src="./images/3.jpg" alt=""></div>
-
-
-<!--     <div id="info-container">
+  <header>
+    <div class="my-slider">
+    <svg class="controll-prev"><use xlink:href="#angle-left" /></svg>
+    <svg class="controll-next"><use xlink:href="#angle-right" /></svg>
+    <div id="info-container">
       <hgroup>
         <h1 id="main-title">50 SHADES</h1>
         <h2 id="main-description">lollol zazaza</h2>
@@ -42,9 +46,15 @@
           <input type="text">          
         </form>
       </div>
-    </div> -->
+    </div>
+    <div class="slide"><img src="./images/1.jpg" alt=""></div>
+    <div class="slide"><img src="./images/2.jpg" alt=""></div>
+    <div class="slide"><img src="./images/3.jpg" alt=""></div>
+    </div>
   </header>
   <main>
+
+
     <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nam alias magni ipsa praesentium error? Commodi dolor porro velit, quo quidem atque dignissimos! Neque molestias aliquam totam perferendis omnis, autem!</article>
     <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis laudantium nulla dolorum accusamus, sapiente repellendus molestiae quibusdam necessitatibus iste nihil ex, voluptatem dolorem in obcaecati veritatis perspiciatis ab ducimus atque!</article>
     <article>Voluptate, cum distinctio quasi quas! Omnis, expedita, eum! Ex delectus, eum officiis ea. Quibusdam quisquam beatae dolor doloribus eos id. Non provident iste, delectus reprehenderit at libero explicabo ad saepe!</article>
@@ -79,8 +89,6 @@
   </main>
   <footer>footer</footer>
   
-
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 

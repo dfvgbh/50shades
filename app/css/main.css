@@ -412,29 +412,42 @@ template {
   width: 100%;
   background-color: #333;
   position: relative; }
-  .my-slider div {
+  .my-slider .slide {
     display: none;
-    position: absolute;
     width: 100%;
+    position: absolute;
+    top: 0;
     height: 420px; }
-    .my-slider div img {
-      max-height: 100%;
+    .my-slider .slide img {
       max-width: 100%;
+      max-height: 100%;
       min-width: 100%;
       min-height: 100%;
       -o-object-fit: cover;
-         object-fit: cover; }
-  .my-slider #control-prev {
-    width: 100px;
-    height: 100px;
+         object-fit: cover;
+      -o-object-position: center;
+         object-position: center;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
+  .my-slider .controll-prev, .my-slider .controll-next {
+    height: 120px;
+    width: 120px;
     position: absolute;
-    z-index: 9999;
-    top: 40%; }
-    .my-slider #control-prev svg {
-      fill: #fff; }
+    z-index: 9998;
+    top: 50%;
+    margin-top: -60px;
+    fill: #eee;
+    cursor: pointer; }
+    .my-slider .controll-prev:hover, .my-slider .controll-next:hover {
+      fill: white; }
+  .my-slider .controll-next {
+    right: 0; }
 
 body {
-  font-family: Verdana, Arial; }
+  font-family: Verdana, Arial;
+  color: #333; }
 
 #top-navbar {
   position: relative; }
@@ -471,7 +484,7 @@ body {
           padding: 0 15px;
           color: #eee; }
           #top-navbar #nav-wrapper ul li a:hover {
-            color: #d5d5d5; }
+            color: white; }
         #top-navbar #nav-wrapper ul li ul {
           display: none;
           position: absolute;
@@ -491,7 +504,11 @@ body {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   background-color: white; }
 
-.icon {
-  width: 150px;
-  height: 150px;
-  background: #eee; }
+#info-container {
+  text-align: center;
+  padding: 100px 0;
+  position: relative;
+  z-index: 1000; }
+  #info-container #main-title, #info-container #main-description {
+    margin-top: 0;
+    color: #fff; }

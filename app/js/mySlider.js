@@ -5,12 +5,13 @@ console, $
 ;(function(){
   'use strict';
 
-  var currentIndex = 0;
-  var prevIndex = -1;
-  var items = $('.my-slider div');
-  var itemsCount = items.length;
-  var slideTimeout = 6000;
-  var defFadeTime = 1500;
+  var currentIndex = 0,
+      prevIndex = -1,
+      items = $('.my-slider .slide'),
+      itemsCount = items.length,
+      slideTimeout = 6000,
+      defFadeTime = 1500,
+      fastFadeTime = 400;
 
   function cycleItems(fadeTime) {
     var item = items.eq(currentIndex);
@@ -22,29 +23,35 @@ console, $
 
   function autoSlide() {
     setInterval(function() {
-      nextSlide();
+      nextSlide(defFadeTime);
     }, slideTimeout);
   }
 
   function init() {
     items.first().css('display', 'block');
+    $('.controll-prev').on('click', function() {
+      prevSlide(fastFadeTime);
+    });
+    $('.controll-next').on('click', function() {
+      nextSlide(fastFadeTime);
+    });
     autoSlide(defFadeTime);
   }
 
-  function nextSlide() {
+  function nextSlide(fadeTime) {
     prevIndex = currentIndex++;
     if (currentIndex > itemsCount - 1) {
       currentIndex = 0;
     }
-    cycleItems(defFadeTime);
+    cycleItems(fadeTime);
   }
 
-  function prevSlide() {
+  function prevSlide(fadeTime) {
     prevIndex = currentIndex--;
     if (currentIndex < 0) {
       currentIndex = itemsCount - 1;
     }
-    cycleItems();
+    cycleItems(fadeTime);
   }
 
   init();
