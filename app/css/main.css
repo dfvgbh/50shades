@@ -471,29 +471,29 @@ body {
 
 #top-navbar {
   position: relative; }
-  #top-navbar #nav-wrapper {
-    background-color: black;
+  #top-navbar .nav-wrapper {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+    background: #111;
     padding: 5px 15px;
     height: 48px;
     width: 100%;
     z-index: 9999;
     position: fixed; }
-    #top-navbar #nav-wrapper ul {
+    #top-navbar .nav-wrapper ul {
       list-style: none;
       float: right;
       margin: 0;
       padding: 0;
       display: block; }
-      #top-navbar #nav-wrapper ul li {
+      #top-navbar .nav-wrapper ul li {
         position: relative;
         display: inline-block;
         margin: 0;
         padding: 0; }
-        #top-navbar #nav-wrapper ul li:hover > ul {
+        #top-navbar .nav-wrapper ul li:hover > ul {
           display: block; }
-        #top-navbar #nav-wrapper ul li a {
+        #top-navbar .nav-wrapper ul li a {
           display: block;
           height: 100%;
           width: 100%;
@@ -503,9 +503,9 @@ body {
           line-height: 50px;
           padding: 0 15px;
           color: #eee; }
-          #top-navbar #nav-wrapper ul li a:hover {
+          #top-navbar .nav-wrapper ul li a:hover {
             color: white; }
-        #top-navbar #nav-wrapper ul li ul {
+        #top-navbar .nav-wrapper ul li ul {
           display: none;
           position: absolute;
           top: 100%;
@@ -513,16 +513,19 @@ body {
           background: #fff;
           padding: 0;
           margin-top: -10px; }
-          #top-navbar #nav-wrapper ul li ul li {
+          #top-navbar .nav-wrapper ul li ul li {
             float: left;
             width: 200px; }
-            #top-navbar #nav-wrapper ul li ul li a {
+            #top-navbar .nav-wrapper ul li ul li a {
               color: #333; }
+  #top-navbar .nav-wrapper-transparent {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.85)), color-stop(60%, rgba(0, 0, 0, 0.4)), color-stop(60%, transparent));
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent);
+    background: linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent); }
 
-.no-rgba #top-navbar {
-  filter: alpha(opacity=0);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  background-color: white; }
+.no-cssgradients .nav-wrapper-transparent {
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#95111111, endColorstr=#00FFFFFF );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#95111111, endColorstr=#00FFFFFF ); }
 
 #info-container {
   text-align: center;

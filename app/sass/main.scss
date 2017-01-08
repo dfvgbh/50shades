@@ -11,9 +11,9 @@ body {
 #top-navbar {
   position: relative;
 
-  #nav-wrapper {
-    background-color: rgba(0, 0, 0, 1);
+  .nav-wrapper {
     box-sizing: border-box;
+    background: #111;
     padding: 5px 15px;
     height: 48px;
     width: 100%;
@@ -74,13 +74,24 @@ body {
       }
     }
   }
+
+  .nav-wrapper-transparent {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0)
+    );
+  }
 }
 
-// opacity support for old IE
-.no-rgba #top-navbar {
-    filter: alpha(opacity=0);
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    background-color: rgb(255, 255, 255);
+
+
+.no-cssgradients .nav-wrapper-transparent {
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(
+    startColorstr=#95111111, endColorstr=#00FFFFFF
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(
+    startColorstr=#95111111, endColorstr=#00FFFFFF
+  );
+
 }
 
 

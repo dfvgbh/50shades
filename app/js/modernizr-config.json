@@ -6,6 +6,7 @@
   ],
   "feature-detects": [
     "test/css/rgba",
-    "test/svg/inline"
+    "test/svg/inline",
+    "test/css/gradients"
   ]
 }
