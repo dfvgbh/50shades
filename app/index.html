@@ -22,19 +22,33 @@
   <nav id="top-navbar">
     <!-- Wrapper for IE8 compatibility (position fixed + z-index) -->
     <div class="nav-wrapper nav-wrapper-transparent">
-      <ul>
-        <li><a href="#">Menu1</a>
-          <ul>
-            <li><a href="#">MenuS1</a></li>
-            <li><a href="#">MenuS2</a></li>
-            <li><a href="#">MenuS3</a></li>
-            <li><a href="#">MenuS4</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Menu2</a></li>
-        <li><a href="#">Menu3</a></li>
-        <li><a href="#">Menu4</a></li>
-      </ul>
+      <div id="nav-search">
+        <form class="nav-search-form" action="/" role="search" >
+          <input required="required" placeholder="Search" name="nav-search-input" type="search">
+          <button name="nav-search-button" >
+            <svg class="icon-search"><use xlink:href="#search" /></svg>
+          </button>
+        </form>
+      </div>
+      <div id="nav-logo">
+        <h2 class="nav-logo-top">
+          <a href="/"></a>
+        </h2>
+      </div>
+      <div id="nav-menu">
+        <ul>
+          <li><a href="/">Gallery</a>
+            <ul>
+              <li><a href="/">Most Popular</a></li>
+              <li><a href="/">Recent</a></li>
+              <li><a href="/">Upload</a></li>
+            </ul>
+          </li>
+          <li><a href="/">About</a></li>
+          <li><a href="/">Contact</a></li>
+          <li><a href="/">. . .</a></li>
+        </ul>   
+      </div>
     </div>
   </nav>
 
