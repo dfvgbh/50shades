@@ -270,14 +270,65 @@ body {
 
 #info-container {
   text-align: center;
-  padding: 100px 0;
+  padding: 130px 20px 0;
   user-select: none;
   position: relative;
   z-index: 1000;
 
 
   #main-title, #main-description {
-    margin-top: 0;
-    color: #fff;
+    margin: 0;
+    color: $menu-text-color;
+  }
+
+  #main-title {
+    font-size: 54px;
+    margin-bottom: 10px;
+  }
+
+  #main-description {
+    font-size: 18px;
+    margin: 5px 0;
+    font-weight: normal;
+  }
+
+  #header-search-form {
+    position: relative;
+    width: 400px;
+    max-width: 100%;
+    margin: 0 auto;
+
+    input {
+      height: 45px;
+      width: 100%;
+      border-radius: 4px;
+      border: none;
+      box-sizing: border-box;
+      background: $menu-text-color;
+      padding: 5px 25px 5px 10px;
+      font-size: 0.9em;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+
+      .icon-search {
+        height: 25px;
+        width: 25px;
+        padding-top: 3px;
+        fill: $menu-theme;
+      }
+    }
+
   }
 }
