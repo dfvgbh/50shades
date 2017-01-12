@@ -19,6 +19,7 @@ body {
     width: 100%;
     z-index: 9999;
     position: fixed;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14);
 
     #nav-search {
       .nav-search-form {
@@ -85,34 +86,32 @@ body {
         padding: 0;
         display: block;
 
-        li {
+        > li {
           position: relative;
           display: inline-block;
           margin: 0;
           padding: 0;
 
-          &:hover > ul {
+          &:hover > ul, &:hover > #login-container {
             display: block;
           }
 
-          a {
+          > a {
             display: block;
             height: 100%;
             text-decoration: none;
-            font-weight: 700;
             font-size: 14px;
             line-height: 50px;
             padding: 0 20px 0 5px;
             box-sizing: border-box;
             color: $menu-text-color;
-            padding-bottom: 5px;
 
             &:hover {
               color: lighten($menu-text-color, 100%);
             }
           }
 
-          ul {
+          ul, #login-container {
             display: none;
             position: absolute;
             top: 100%;
@@ -121,8 +120,24 @@ body {
             box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 1px 3px 0 rgba(0,0,0,0.25);
             background: #fff;
             border-radius: 4px;
-            padding: 5px 0;
             box-sizing: border-box;
+
+            &:after {
+              content: '';
+              display: block;
+              position: absolute;
+              right: 12px;
+              top: -8px;
+              width: 0; 
+              height: 0; 
+              border-left: 8px solid transparent;
+              border-right: 8px solid transparent;
+              border-bottom: 8px solid #fff;
+            }
+          }
+          
+          ul {
+            padding: 5px 0;
 
             li {
               float: left;
@@ -145,29 +160,98 @@ body {
                 }
               }
             }
-
-            &:after {
-              content: "";
-              display: block;
-              position: absolute;
-              right: 8%;
-              top: -8px;
-              width: 0; 
-              height: 0; 
-              border-left: 8px solid transparent;
-              border-right: 8px solid transparent;
-              border-bottom: 8px solid #fff;
-            }
           }
         }
       }
+
+      #login-container {
+        padding: 12px;
+
+        .login-form {
+          label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+          }
+          
+          .email-input, .password-input {
+            margin: 8px 0;
+            width: 220px;
+            border: 1px solid $menu-theme;
+            padding: 4px;
+            border-radius: 3px;
+          }
+
+          .login-form-rememberForgot {
+            font-size: 12px;
+            display: inline-block;
+            .forgot {
+              text-decoration: none;
+              margin-left: 4px;
+
+              &:active {
+                color: $menu-theme;
+              }
+            }
+          }
+          .login-form-submitbtn {
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 5px;
+            padding: 8px 16px;
+            background-color: $menu-theme;
+            color: $menu-text-color;
+          }
+        }
+        .signup-header {
+          font-size: 14px;
+          margin-top: 6px;
+        }
+        .signup-btn {
+          display: block;
+          width: 100%;
+          margin-top: 5px;
+          box-sizing: border-box;
+          border-radius: 4px;
+          font-size: 15px;
+          font-weight: bold;
+          text-decoration: none;
+          padding: 8px 16px;
+          text-align: center;
+          background-color: $menu-theme;
+          color: $menu-text-color;
+          cursor: pointer;
+        }
+      }
     }
+
+    #nav-search, #nav-logo {
+      opacity: 1;
+      transition: opacity .4s;
+    }
+    & {
+      transition: background .4s;
+    } 
   }
 
   .nav-wrapper-transparent {
     background: linear-gradient(
       rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0)
     );
+    box-shadow: none;
+
+    #nav-search, #nav-logo {
+      opacity: 0;
+      transition: opacity .4s;
+      pointer-events: none;
+    }     
+    & {
+      transition: background .4s;
+    } 
   }
 }
 

@@ -479,7 +479,9 @@ body {
     height: 50px;
     width: 100%;
     z-index: 9999;
-    position: fixed; }
+    position: fixed;
+    -webkit-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14);
+            box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14); }
     #top-navbar .nav-wrapper #nav-search .nav-search-form {
       float: left;
       margin-top: 8px;
@@ -527,28 +529,26 @@ body {
       margin: 0;
       padding: 0;
       display: block; }
-      #top-navbar .nav-wrapper #nav-menu ul li {
+      #top-navbar .nav-wrapper #nav-menu ul > li {
         position: relative;
         display: inline-block;
         margin: 0;
         padding: 0; }
-        #top-navbar .nav-wrapper #nav-menu ul li:hover > ul {
+        #top-navbar .nav-wrapper #nav-menu ul > li:hover > ul, #top-navbar .nav-wrapper #nav-menu ul > li:hover > #login-container {
           display: block; }
-        #top-navbar .nav-wrapper #nav-menu ul li a {
+        #top-navbar .nav-wrapper #nav-menu ul > li > a {
           display: block;
           height: 100%;
           text-decoration: none;
-          font-weight: 700;
           font-size: 14px;
           line-height: 50px;
           padding: 0 20px 0 5px;
           -webkit-box-sizing: border-box;
                   box-sizing: border-box;
-          color: #eee;
-          padding-bottom: 5px; }
-          #top-navbar .nav-wrapper #nav-menu ul li a:hover {
+          color: #eee; }
+          #top-navbar .nav-wrapper #nav-menu ul > li > a:hover {
             color: white; }
-        #top-navbar .nav-wrapper #nav-menu ul li ul {
+        #top-navbar .nav-wrapper #nav-menu ul > li ul, #top-navbar .nav-wrapper #nav-menu ul > li #login-container {
           display: none;
           position: absolute;
           top: 100%;
@@ -559,39 +559,111 @@ body {
           background: #fff;
           -webkit-border-radius: 4px;
                   border-radius: 4px;
-          padding: 5px 0;
           -webkit-box-sizing: border-box;
                   box-sizing: border-box; }
-          #top-navbar .nav-wrapper #nav-menu ul li ul li {
-            float: left;
-            min-width: 170px;
-            padding: 10px;
-            -webkit-box-sizing: border-box;
-                    box-sizing: border-box; }
-            #top-navbar .nav-wrapper #nav-menu ul li ul li:hover {
-              background: #eee; }
-            #top-navbar .nav-wrapper #nav-menu ul li ul li a {
-              color: #333;
-              font-weight: normal;
-              line-height: 20px;
-              padding: 0; }
-              #top-navbar .nav-wrapper #nav-menu ul li ul li a:hover {
-                color: inherit; }
-          #top-navbar .nav-wrapper #nav-menu ul li ul:after {
-            content: "";
+          #top-navbar .nav-wrapper #nav-menu ul > li ul:after, #top-navbar .nav-wrapper #nav-menu ul > li #login-container:after {
+            content: '';
             display: block;
             position: absolute;
-            right: 8%;
+            right: 12px;
             top: -8px;
             width: 0;
             height: 0;
             border-left: 8px solid transparent;
             border-right: 8px solid transparent;
             border-bottom: 8px solid #fff; }
+        #top-navbar .nav-wrapper #nav-menu ul > li ul {
+          padding: 5px 0; }
+          #top-navbar .nav-wrapper #nav-menu ul > li ul li {
+            float: left;
+            min-width: 170px;
+            padding: 10px;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box; }
+            #top-navbar .nav-wrapper #nav-menu ul > li ul li:hover {
+              background: #eee; }
+            #top-navbar .nav-wrapper #nav-menu ul > li ul li a {
+              color: #333;
+              font-weight: normal;
+              line-height: 20px;
+              padding: 0; }
+              #top-navbar .nav-wrapper #nav-menu ul > li ul li a:hover {
+                color: inherit; }
+    #top-navbar .nav-wrapper #nav-menu #login-container {
+      padding: 12px; }
+      #top-navbar .nav-wrapper #nav-menu #login-container .login-form label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box; }
+      #top-navbar .nav-wrapper #nav-menu #login-container .login-form .email-input, #top-navbar .nav-wrapper #nav-menu #login-container .login-form .password-input {
+        margin: 8px 0;
+        width: 220px;
+        border: 1px solid #111;
+        padding: 4px;
+        -webkit-border-radius: 3px;
+                border-radius: 3px; }
+      #top-navbar .nav-wrapper #nav-menu #login-container .login-form .login-form-rememberForgot {
+        font-size: 12px;
+        display: inline-block; }
+        #top-navbar .nav-wrapper #nav-menu #login-container .login-form .login-form-rememberForgot .forgot {
+          text-decoration: none;
+          margin-left: 4px; }
+          #top-navbar .nav-wrapper #nav-menu #login-container .login-form .login-form-rememberForgot .forgot:active {
+            color: #111; }
+      #top-navbar .nav-wrapper #nav-menu #login-container .login-form .login-form-submitbtn {
+        width: 100%;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        -webkit-border-radius: 4px;
+                border-radius: 4px;
+        border: none;
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 5px;
+        padding: 8px 16px;
+        background-color: #111;
+        color: #eee; }
+      #top-navbar .nav-wrapper #nav-menu #login-container .signup-header {
+        font-size: 14px;
+        margin-top: 6px; }
+      #top-navbar .nav-wrapper #nav-menu #login-container .signup-btn {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        -webkit-border-radius: 4px;
+                border-radius: 4px;
+        font-size: 15px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 8px 16px;
+        text-align: center;
+        background-color: #111;
+        color: #eee;
+        cursor: pointer; }
+    #top-navbar .nav-wrapper #nav-search, #top-navbar .nav-wrapper #nav-logo {
+      opacity: 1;
+      -webkit-transition: opacity .4s;
+      transition: opacity .4s; }
+    #top-navbar .nav-wrapper {
+      -webkit-transition: background .4s;
+      transition: background .4s; }
   #top-navbar .nav-wrapper-transparent {
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.85)), color-stop(60%, rgba(0, 0, 0, 0.4)), color-stop(60%, transparent));
     background: -webkit-linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent);
-    background: linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent); }
+    background: linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent);
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+    #top-navbar .nav-wrapper-transparent #nav-search, #top-navbar .nav-wrapper-transparent #nav-logo {
+      opacity: 0;
+      -webkit-transition: opacity .4s;
+      transition: opacity .4s;
+      pointer-events: none; }
+    #top-navbar .nav-wrapper-transparent {
+      -webkit-transition: background .4s;
+      transition: background .4s; }
 
 #info-container {
   text-align: center;

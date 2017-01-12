@@ -31,9 +31,9 @@
         </form>
       </div>
       <div id="nav-logo">
-        <h2 class="nav-logo-top">
+        <div class="nav-logo-top">
           <a href="/"></a>
-        </h2>
+        </div>
       </div>
       <div id="nav-menu">
         <ul>
@@ -46,7 +46,24 @@
           </li>
           <li><a href="/">About</a></li>
           <li><a href="/">Contact</a></li>
-          <li><a href="/">. . .</a></li>
+          <li><a href="/">. . .</a>
+            <div id="login-container">
+              <form action="/" class="login-form" method="post">
+                <label>Email<input type="email" class="email-input" name="email" autocomplete="on" required="required"></label>
+                <label>Password<input type="password" class="password-input" name="password" required="required"></label>                
+                <div class="login-form-rememberForgot">
+                  <input type="checkbox" value="1" name="remember-me">
+                  <span>Remember me</span>
+                  <span class="separator">&#183;</span>
+                  <a class="forgot" href="/">Forgot password?</a>
+                </div>
+                <input type="submit" class="login-form-submitbtn" value="Log in"> 
+              </form>
+              <hr>
+              <div class="signup-header">Haven't account?</div>
+              <a href="/" role="button" class="signup-btn">Sign up</a>
+            </div>
+          </li>
         </ul>   
       </div>
     </div>
