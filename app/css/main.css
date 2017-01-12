@@ -479,9 +479,7 @@ body {
     height: 50px;
     width: 100%;
     z-index: 9999;
-    position: fixed;
-    -webkit-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14);
-            box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14); }
+    position: fixed; }
     #top-navbar .nav-wrapper #nav-search .nav-search-form {
       float: left;
       margin-top: 8px;
@@ -515,6 +513,7 @@ body {
           fill: #eee; }
     #top-navbar .nav-wrapper #nav-logo .nav-logo-top {
       position: absolute;
+      height: 100%;
       left: 50%;
       margin: 0;
       margin-left: -25px; }
@@ -623,7 +622,8 @@ body {
         margin-top: 5px;
         padding: 8px 16px;
         background-color: #111;
-        color: #eee; }
+        color: #eee;
+        cursor: pointer; }
       #top-navbar .nav-wrapper #nav-menu #login-container .signup-header {
         font-size: 14px;
         margin-top: 6px; }
@@ -653,9 +653,7 @@ body {
   #top-navbar .nav-wrapper-transparent {
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.85)), color-stop(60%, rgba(0, 0, 0, 0.4)), color-stop(60%, transparent));
     background: -webkit-linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent);
-    background: linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent);
-    -webkit-box-shadow: none;
-            box-shadow: none; }
+    background: linear-gradient(rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent); }
     #top-navbar .nav-wrapper-transparent #nav-search, #top-navbar .nav-wrapper-transparent #nav-logo {
       opacity: 0;
       -webkit-transition: opacity .4s;
@@ -667,7 +665,7 @@ body {
 
 #info-container {
   text-align: center;
-  padding: 130px 20px 0;
+  padding: 100px 20px 0;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -679,11 +677,12 @@ body {
     color: #eee; }
   #info-container #main-title {
     font-size: 54px;
-    margin-bottom: 10px; }
+    margin-bottom: 8px; }
   #info-container #main-description {
-    font-size: 18px;
-    margin: 5px 0;
-    font-weight: normal; }
+    font-size: 21px;
+    margin: 8px 0;
+    font-weight: normal;
+    text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.9); }
   #info-container #header-search-form {
     position: relative;
     width: 400px;
@@ -698,7 +697,7 @@ body {
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
       background: #eee;
-      padding: 5px 25px 5px 10px;
+      padding: 5px 40px 5px 10px;
       font-size: 0.9em; }
       #info-container #header-search-form input:focus {
         outline: none; }
@@ -707,6 +706,7 @@ body {
       right: 0;
       top: 0;
       height: 100%;
+      padding: 0 8px;
       background: transparent;
       border: none;
       cursor: pointer; }

@@ -19,7 +19,6 @@ body {
     width: 100%;
     z-index: 9999;
     position: fixed;
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14);
 
     #nav-search {
       .nav-search-form {
@@ -65,6 +64,7 @@ body {
     #nav-logo {
       .nav-logo-top {
         position: absolute;
+        height: 100%;
         left: 50%;
         margin: 0;
         margin-left: -25px;
@@ -205,6 +205,7 @@ body {
             padding: 8px 16px;
             background-color: $menu-theme;
             color: $menu-text-color;
+            cursor: pointer;
           }
         }
         .signup-header {
@@ -242,7 +243,6 @@ body {
     background: linear-gradient(
       rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0)
     );
-    box-shadow: none;
 
     #nav-search, #nav-logo {
       opacity: 0;
@@ -270,7 +270,7 @@ body {
 
 #info-container {
   text-align: center;
-  padding: 130px 20px 0;
+  padding: 100px 20px 0;
   user-select: none;
   position: relative;
   z-index: 1000;
@@ -283,13 +283,15 @@ body {
 
   #main-title {
     font-size: 54px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   #main-description {
-    font-size: 18px;
-    margin: 5px 0;
+    font-size: 21px;
+    margin: 8px 0;
     font-weight: normal;
+    text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.9);
+
   }
 
   #header-search-form {
@@ -305,7 +307,7 @@ body {
       border: none;
       box-sizing: border-box;
       background: $menu-text-color;
-      padding: 5px 25px 5px 10px;
+      padding: 5px 40px 5px 10px;
       font-size: 0.9em;
 
       &:focus {
@@ -318,6 +320,7 @@ body {
       right: 0;
       top: 0;
       height: 100%;
+      padding: 0 8px;
       background: transparent;
       border: none;
       cursor: pointer;
