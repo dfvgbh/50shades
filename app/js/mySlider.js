@@ -62,5 +62,7 @@ console, $
     cycleItems(fadeTime);
   }
 
-  init();
+  $(function() {
+    init();
+  });
 })();
