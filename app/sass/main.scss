@@ -343,15 +343,13 @@ main {
     @extend %clearfix;
 
     .photo-container {
-      @include columns(4, 1);
+      @include columns(4, .8);
       height: 250px;
       box-sizing: border-box;
       background-repeat: no-repeat;
       background-position: 50% 50%;
-      background-image: url(../images/1.jpg);
       background-size: cover;
-
-
+      
       .photo-item {
         display: block;
         width: 100%;

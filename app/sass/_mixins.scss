@@ -1,7 +1,10 @@
+/**
+ * Just clearfix. Not mixin, has to be extended via @extend.
+ */
 %clearfix {
-  *zoom: 1; // For IE 6/7
+  *zoom: 1; // Hack for IE 6/7
   &:before, &:after {
-    content: " ";
+    content: '';
     display: table;
   }
   &:after {
@@ -9,6 +12,11 @@
   }
 }
 
+/**
+ * Generates styles for responsive columns with percantage width.
+ * @param num - number of columns.
+ * @param margin - the percantage (e.g. 5, or 15, or .5) value, bottom and right margin of this element (except last child in a row).
+ */
 @mixin columns($num, $margin) {
   width: percentage((1 - (.01 * $margin * ($num - 1))) / $num );
   margin-right: $margin * 1%;
