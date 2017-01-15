@@ -13,3 +13,4 @@
 13. authtorization, authentification (JWT oauth 2)
 14. JSDoc
 15. big preview image
+16. window.pushState (history state)

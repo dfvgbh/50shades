@@ -339,21 +339,23 @@ body {
 main {
   margin: 50px 3%;
 
-  #gallery {
-    @extend %clearfix;
+  #gallery-section {
+    #gallery {
+      @extend %clearfix;
 
-    .photo-container {
-      @include columns(4, .8);
-      height: 250px;
-      box-sizing: border-box;
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
-      background-size: cover;
-      
-      .photo-item {
-        display: block;
-        width: 100%;
-        height: 100%;
+      .photo-container {
+        @include columns(4, .8);
+        height: 250px;
+        box-sizing: border-box;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: cover;
+        
+        .photo-item {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }

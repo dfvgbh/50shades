@@ -23,7 +23,7 @@
   margin-bottom: $margin * 1%;
   float: left;
 
-  &:nth-child(#{$num}n + 1) {
+  &:nth-child(#{$num}n) {
     margin-right: 0;
   }
 }
