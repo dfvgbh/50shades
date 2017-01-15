@@ -20,7 +20,7 @@ console, $
   /**
    * Sends request to get an array of images refered to the @page. 
    * Updating gallery with requested iamges.
-   * @return {Promise} - promise.
+   * @return {Deffered} - JQuery deffered object.
    */
   function updateGallery(page) {
 
@@ -51,7 +51,7 @@ console, $
   /**
    * Updating last page number. Sending ajax request for getting header,
    * which contains total count of records in base.
-   * @return {Promise} - promise.
+   * @return {Deffered} - JQuery deffered object.
    */
   function updateLastPageNumber() {
     return $.ajax({
@@ -156,7 +156,11 @@ console, $
       var a = Pagination.e.getElementsByTagName('a');
       for (var i = 0; i < a.length; i++) {
           if (+a[i].innerHTML === Pagination.page) a[i].className = 'current';
-          a[i].addEventListener('click', Pagination.Click, false);
+          if (Modernizr.eventlistener) {
+            a[i].addEventListener('click', Pagination.Click, false);
+          } else {
+            a[i].attachEvent('onclick', Pagination.Click);
+          }
       }
     },
 
@@ -199,16 +203,22 @@ console, $
     // binding buttons
     Buttons: function(e) {
       var nav = e.getElementsByTagName('a');
-      nav[0].addEventListener('click', Pagination.Prev, false);
-      nav[1].addEventListener('click', Pagination.Next, false);
+      if (Modernizr.eventlistener) {
+        nav[0].addEventListener('click', Pagination.Prev, false);
+        nav[1].addEventListener('click', Pagination.Next, false);
+      } else {
+        nav[0].attachEvent('onclick', Pagination.Prev);
+        nav[1].attachEvent('onclick', Pagination.Next);
+      }
+
     },
 
     // create skeleton
     Create: function(e) {
       var html = [
-          '<a>&#9668;</a>', // previous button
+          '<a><svg class="controll-prev"><use xlink:href="#angle-left" /></svg></a>', // previous button
           '<span></span>',  // pagination container
-          '<a>&#9658;</a>'  // next button
+          '<a><svg class="controll-next"><use xlink:href="#angle-right" /></svg></a>'  // next button
       ];
 
       e.innerHTML = html.join('');
@@ -236,7 +246,7 @@ console, $
       Pagination.Init(document.getElementById('pagination'), {
           size: lastPage,
           page: 1,
-          step: 3,
+          step: 2,
           callback: updateGallery
       });
     });

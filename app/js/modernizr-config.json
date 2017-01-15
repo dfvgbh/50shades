@@ -7,6 +7,7 @@
   "feature-detects": [
     "test/css/rgba",
     "test/svg/inline",
-    "test/css/gradients"
+    "test/css/gradients",
+    "test/eventlistener"
   ]
 }

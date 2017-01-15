@@ -358,6 +358,43 @@ main {
         }
       }
     }
+
+    #pagination {
+      width: 100%;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 17px;
+
+      >a:hover svg {
+          fill: #000;
+      }
+      
+      svg {
+        width: 2.5em;
+        height: 2.5em;
+        vertical-align: middle;
+        cursor: pointer;
+        padding-bottom: .4em;
+        fill: $text-color;
+
+      }
+
+      span {
+        a {
+          border-radius: 3px;
+          padding: .4em .45em;
+          cursor: pointer;
+
+          &:hover {
+            color: #000;
+          }
+        }
+
+        a.current {
+          background: rgba(0, 0, 0, .2)
+        }
+      }
+    }
   }
 }
 

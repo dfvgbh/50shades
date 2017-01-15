@@ -7,18 +7,15 @@
 
   <!-- Building css, js references with 'gulp-useref' -->
 
-  <!--build:css css/styles.min.css-->
-  <link rel="stylesheet" href="./css/main.css">
-  <!-- endbuild -->
-
   <!--build:js js/modernizr.min.js-->
   <script src="./js/modernizr.js"></script>
   <!-- endbuild -->
+
+  <!--build:css css/styles.min.css-->
+  <link rel="stylesheet" href="./css/main.css">
+  <!-- endbuild -->
 </head>
 <body>
-  <!-- Inline svg sprite injecting for supporting IE9+. Also there is the way to sprite external using with saving IE9+ support, but polyfill https://github.com/jonathantneal/svg4everybody must be included. -->
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none"><symbol viewBox="0 0 1792 1792" id="angle-left"><path d="M1203 544q0 13-10 23L800 960l393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10L631 983q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></symbol><symbol viewBox="0 0 1792 1792" id="angle-right"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></symbol><symbol viewBox="0 0 1792 1792" id="search"><path d="M1216 832q0-185-131.5-316.5T768 384 451.5 515.5 320 832t131.5 316.5T768 1280t316.5-131.5T1216 832zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225T64 832t55.5-273.5 150-225 225-150T768 128t273.5 55.5 225 150 150 225T1472 832q0 220-124 399l343 343q37 37 37 90z"/></symbol></svg>
-
   <nav id="top-navbar">
     <!-- Wrapper for IE8 compatibility (position fixed + z-index) -->
     <div class="nav-wrapper nav-wrapper-transparent">
@@ -71,8 +68,13 @@
 
   <header>
     <div class="my-slider">
-      <svg class="controll-prev"><use xlink:href="#angle-left" /></svg>
-      <svg class="controll-next"><use xlink:href="#angle-right" /></svg>
+      <!-- Svg div wrapping for IE8 support -->
+      <div class="controll-prev">
+        <svg><use xlink:href="#angle-left" /></svg>
+      </div>
+      <div class="controll-next">
+        <svg><use xlink:href="#angle-right" /></svg>
+      </div>
       <div id="info-container">
         <h1 id="main-title">50 SHADES</h1>
         <h2 id="main-description">Mr. Black will see you now</h2>
@@ -92,16 +94,14 @@
     <section id="gallery-section">
       <h3>Recently added photos</h3>
       <div id="gallery"></div>
-      <div id="pagination"></div>
-<!--       <div class="photo-container">
-        <a href="/" class="photo-item"></a>
-      </div> -->
-
-      
+      <div id="pagination"></div>    
     </section>
   </main>
   <footer>footer</footer>
   
+
+  <!-- Inline svg sprite injecting for supporting IE9+. Also there is the way to sprite external using with saving IE9+ support, but polyfill https://github.com/jonathantneal/svg4everybody must be included. -->
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none"><symbol viewBox="0 0 1792 1792" id="angle-left"><path d="M1203 544q0 13-10 23L800 960l393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10L631 983q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"/></symbol><symbol viewBox="0 0 1792 1792" id="angle-right"><path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/></symbol><symbol viewBox="0 0 1792 1792" id="search"><path d="M1216 832q0-185-131.5-316.5T768 384 451.5 515.5 320 832t131.5 316.5T768 1280t316.5-131.5T1216 832zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225T64 832t55.5-273.5 150-225 225-150T768 128t273.5 55.5 225 150 150 225T1472 832q0 220-124 399l343 343q37 37 37 90z"/></symbol></svg>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
