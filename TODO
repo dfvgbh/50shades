@@ -1,5 +1,5 @@
 1. gallery.js refactor
-2. pagination
+2. pagination +
 3. contacts, about us pages (Goole map API)
 4. recent, populat pages, SEARCH (jquery path)
 5. sign in page
@@ -13,4 +13,4 @@
 13. authtorization, authentification (JWT oauth 2)
 14. JSDoc
 15. big preview image
-16. window.pushState (history state)
+16. ROUTER, server response config

@@ -30,6 +30,27 @@ gulp.task('browser-sync', function() {
   browserSync({
     server: {
       baseDir: 'app'
+      // routes: {
+      //   "/about": "app"
+      // }
+      // middleware: [
+      //   function(req, res, next) {
+      //     console.log("-----------------------------------");
+      //     for (var key in res) {
+      //       console.log(key);
+      //     }
+
+      //     next();
+      //   }
+      // ]
+    },
+    proxy: {
+    target: "http://localhost:3001/",
+      proxyRes: [
+          function(proxyRes, req, res) {
+              console.log(proxyRes.headers);
+          }
+      ]
     },
     notify: false
   });
