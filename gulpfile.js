@@ -16,7 +16,7 @@ var gulp           = require('gulp'),
     filter         = require('gulp-filter'),
     svg2png        = require('gulp-svg2png');
 
-var dirs = {
+var files = {
   dist: './dist',
   sass: './app/sass/**/*.+(sass|scss)',
   html: './app/*.html',
@@ -28,37 +28,14 @@ var dirs = {
 // browser-sync init
 gulp.task('browser-sync', function() {
   browserSync({
-    server: {
-      baseDir: 'app'
-      // routes: {
-      //   "/about": "app"
-      // }
-      // middleware: [
-      //   function(req, res, next) {
-      //     console.log("-----------------------------------");
-      //     for (var key in res) {
-      //       console.log(key);
-      //     }
-
-      //     next();
-      //   }
-      // ]
-    },
-    proxy: {
-    target: "http://localhost:3001/",
-      proxyRes: [
-          function(proxyRes, req, res) {
-              console.log(proxyRes.headers);
-          }
-      ]
-    },
+    proxy: 'localhost:3000',
     notify: false
   });
 });
 
 // compile sass
 gulp.task('sass', function() {
-  return gulp.src(dirs.sass)
+  return gulp.src(files.sass)
   .pipe(sass().on('error', sass.logError))
   .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie >= 8'], { cascade: true }))
   .pipe(gulp.dest('./app/css'))
@@ -72,41 +49,35 @@ gulp.task('clear-cache', function () {
 
 // minimazing images
 gulp.task('imagemin', function(){
-  return gulp.src(dirs.img)
+  return gulp.src(files.img)
   .pipe(cache(imagemin({
       interlaced: true,
       progressive: true,
       svgoPlugins: [{removeViewBox: false}],
       use: [pngquant()]
     })))
-  .pipe(gulp.dest(dirs.dist + '/images'));
+  .pipe(gulp.dest(files.dist + '/images'));
 });
 
 // copy fonts
 gulp.task('fonts', function() {
   return gulp.src('./app/fonts/**/*')
-  .pipe(gulp.dest(dirs.dist + '/fonts'));
-});
-
-// copy db
-gulp.task('db', function() {
-  return gulp.src('./app/db/**/*')
-  .pipe(gulp.dest(dirs.dist + '/db'));
+  .pipe(gulp.dest(files.dist + '/fonts'));
 });
 
 // clean dist folder
 gulp.task('clear-dist', function() {
-  return del.sync(dirs.dist + '/*');
+  return del.sync(files.dist + '/*');
 });
 
 // useref: concatination, uglifying js
 // minimizing css
 gulp.task('useref', function(){
-  return gulp.src(dirs.html)
+  return gulp.src(files.html)
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest(dirs.dist));
+    .pipe(gulp.dest(files.dist));
 });
 
  // create svg sprite in «symbol» mode
@@ -140,7 +111,7 @@ gulp.task('png-sprite', function () {
   return gulp.src('./app/images/sprite/out/intermediate-svg/*.svg')
     .pipe(svgSpritesPNG())
     .pipe(gulp.dest('./app/images/pngsprite')) // Write the sprite-sheet + CSS + Preview 
-    .pipe(filter("**/*.svg"))  // Filter out everything except the SVG file
+    .pipe(filter('**/*.svg'))  // Filter out everything except the SVG file
     .pipe(svg2png())           // Create a PNG 
     .pipe(gulp.dest('./app/images/pngsprite'));
 });
@@ -149,17 +120,19 @@ gulp.task('png-sprite', function () {
 gulp.task('build', function (callback) {
   runSequence(['clear-dist', 'clear-cache'], 
     'sass',
-    ['useref', 'imagemin', 'fonts', 'db'],
+    ['useref', 'imagemin', 'fonts'],
     callback
   );
 });
 
 // watcher
 gulp.task('watch', function() {
-  gulp.watch(dirs.sass, ['sass']);
-  gulp.watch(dirs.html, browserSync.reload);
-  gulp.watch(dirs.js, browserSync.reload);
+  gulp.watch(files.sass, ['sass']);
+  gulp.watch(files.html, browserSync.reload);
+  gulp.watch(files.js, browserSync.reload);
 });
+
+
 
 // default
 gulp.task('default', function(callback) {

@@ -15,7 +15,7 @@ console, $
       lastPage     = 0,
       notFoundUrl = 'http://ci.memecdn.com/1850732.jpg',
       itemHtml    = '<div class="photo-container"><a href="/"class="photo-item"></a></div>',
-      root        = 'http://localhost:3000/images';
+      root        = 'http://localhost:3000/api/images';
 
   /**
    * Sends request to get an array of images refered to the @page. 
@@ -263,7 +263,7 @@ console, $
     },
 
     clearSlashes: function(path) {
-      return path.toString().replace(/\/$/, '').replace(/^\//, '');
+      return path.toString().replace(/^\//, '');
     },
 
     add: function(re, handler) {
@@ -331,26 +331,6 @@ console, $
     }
   };
 
-  // configuration
-  Router.config({ mode: 'history'});
-
-  // returning the user to the initial state
-  Router.navigate();
-
-  // adding routes
-  Router
-  .add(/about/, function() {
-      console.log('about');
-  })
-  .add(/products\/(.*)\/edit\/(.*)/, function() {
-      console.log('products', arguments);
-  })
-  .add(function() {
-      console.log('default');
-  })
-  .listen();
-
-  // forwarding
 
 
   /* * * * * * * * * * * * * * * * *
@@ -367,10 +347,35 @@ console, $
           callback: updateGallery
       });
     });
+
+    // configuration
+    Router.config({ mode: 'history'});
+    // returning the user to the initial state
+    // Router.navigate();
+    // adding routes
+    Router
+    .add(/about\/$/, function() {
+        console.log('about');
+    })    
+    .add(/about\/sec/, function() {
+        console.log('about / sec');
+    })
+    .add(/products\/(.*)\/edit\/(.*)/, function() {
+        console.log('products', arguments);
+    })
+    .add(function() {
+        console.log('default');
+    })
+    .listen();
+
+    Router.navigate('about/');
+
+    // forwarding
   };
 
 
   $(function() {
     init();
+    Router.check();
   });
 })();
