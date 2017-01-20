@@ -58,7 +58,8 @@
 
     check: function(f) {
       var fragment = f || this.getFragment();
-      for(var i=0; i<this.routes.length; i++) {
+      console.log(fragment);
+      for(var i = 0;  i < this.routes.length; i++) {
         var match = fragment.match(this.routes[i].re);
         if(match) {
           match.shift();

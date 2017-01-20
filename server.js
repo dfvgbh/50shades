@@ -12,8 +12,8 @@ server.set('strict routing', true);
 
 var validRoutes = [
   '/',
-  '/about/?',
-  '/asd/:id'
+  '/about/as/?',
+  /page\d+\/?/,
 ];
 
 server.enable('strict routing');
@@ -26,7 +26,7 @@ function sendIndex(request, response, next) {
 // sets handlers for valid routes
 for (var i = 0; i < validRoutes.length; i++) {
   server.use(validRoutes[i], serveStatic(path.join(__dirname, baseDir)));
-  // server.get(validRoutes[i], sendIndex);
+  server.get(validRoutes[i], sendIndex);
 }
 
 // Set default middlewares (logger, static, cors and no-cache) 

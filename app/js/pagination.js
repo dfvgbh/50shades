@@ -25,15 +25,15 @@
         Pagination.html += '<a>' + i + '</a>';
       }
     },
+    
+    // add first page with separator
+    first: function() {
+      Pagination.html += '<a>1</a><i>...</i>';
+    },
 
     // add last page with separator
     last: function() {
       Pagination.html += '<i>...</i><a>' + Pagination.size + '</a>';
-    },
-
-    // add first page with separator
-    first: function() {
-      Pagination.html += '<a>1</a><i>...</i>';
     },
 
 
@@ -46,6 +46,7 @@
       
       Pagination.page = +this.innerHTML;
       Pagination.start();
+      Pagination.callback(Pagination.page);
     },
 
     // previous page
@@ -55,6 +56,7 @@
         Pagination.page = 1;
       }
       Pagination.start();
+      Pagination.callback(Pagination.page);
     },
 
     // next page
@@ -64,6 +66,7 @@
         Pagination.page = Pagination.size;
       }
       Pagination.start();
+      Pagination.callback(Pagination.page);
     },
 
 
@@ -93,8 +96,6 @@
 
     // find pagination type
     start: function() {
-      Pagination.callback(Pagination.page);
-
       if (Pagination.size < Pagination.step * 2 + 6) {
         Pagination.add(1, Pagination.size + 1);
       }
@@ -112,6 +113,7 @@
         Pagination.last();
       }
       Pagination.finish();
+
     },
 
 
@@ -136,12 +138,12 @@
     create: function(e) {
       var html = [
         '<a><svg class="controll-prev"><use xlink:href="#angle-left" /></svg></a>', // previous button
-        '<span></span>',  // pagination container
+        '<span class="pagination-inner"></span>',  // pagination container
         '<a><svg class="controll-next"><use xlink:href="#angle-right" /></svg></a>'  // next button
       ];
 
       e.innerHTML = html.join('');
-      Pagination.e = e.getElementsByTagName('span')[0];
+      Pagination.e = e.getElementsByClassName('pagination-inner')[0];
       Pagination.buttons(e);
     },
 
@@ -154,5 +156,5 @@
   };
 
   window.Pagination = Pagination;
-  
+
 })(window);
