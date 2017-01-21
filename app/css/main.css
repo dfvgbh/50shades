@@ -638,7 +638,7 @@ body {
           margin-left: 4px; }
           #top-navbar .nav-wrapper #nav-menu #login-container .login-form .login-form-rememberForgot .forgot:active {
             color: #111; }
-      #top-navbar .nav-wrapper #nav-menu #login-container .login-form .login-form-submitbtn {
+      #top-navbar .nav-wrapper #nav-menu #login-container .login-form .login-form-submit {
         width: 100%;
         -webkit-box-sizing: border-box;
                 box-sizing: border-box;
@@ -760,6 +760,8 @@ body {
 
 main {
   margin: 50px 3%; }
+  main section {
+    display: none; }
   main #gallery-section #gallery .photo-container {
     width: 32.8%;
     margin-right: 0.8%;
@@ -839,6 +841,58 @@ main {
         color: #000; }
     main #gallery-section #pagination span a.current {
       background: rgba(0, 0, 0, 0.2); }
+  main #upload-section {
+    text-align: center;
+    margin: 20px auto; }
+    main #upload-section #upload-form {
+      width: 50%;
+      display: inline-block;
+      text-align: left; }
+      main #upload-section #upload-form label {
+        margin: 10px;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        width: 100%; }
+      main #upload-section #upload-form input {
+        width: 100%;
+        padding: 4px;
+        -webkit-border-radius: 3px;
+                border-radius: 3px;
+        border: 1px solid #111;
+        margin: 7px 10px;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box; }
+      main #upload-section #upload-form .upload-form-submit {
+        width: 100%;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        -webkit-border-radius: 4px;
+                border-radius: 4px;
+        border: none;
+        font-weight: bold;
+        font-size: 15px;
+        margin-top: 5px;
+        padding: 8px 16px;
+        background-color: #111;
+        color: #eee;
+        cursor: pointer; }
+      main #upload-section #upload-form .email-input, main #upload-section #upload-form .password-input {
+        margin: 8px 0;
+        width: 220px;
+        border: 1px solid #111;
+        padding: 4px;
+        -webkit-border-radius: 3px;
+                border-radius: 3px; }
+      main #upload-section #upload-form .login-form-rememberForgot {
+        font-size: 12px;
+        display: inline-block; }
+        main #upload-section #upload-form .login-form-rememberForgot .forgot {
+          text-decoration: none;
+          margin-left: 4px; }
+          main #upload-section #upload-form .login-form-rememberForgot .forgot:active {
+            color: #111; }
+  main .visible {
+    display: block; }
 
 footer {
   margin: 30px 0 0;

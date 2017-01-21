@@ -8,6 +8,7 @@
     "test/css/rgba",
     "test/svg/inline",
     "test/css/gradients",
-    "test/eventlistener"
+    "test/eventlistener",
+    "test/history"
   ]
 }

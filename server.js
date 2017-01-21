@@ -8,12 +8,13 @@ var fs          = require('fs'),
     router      = jsonServer.router('./db/db.json'),
     middlewares = jsonServer.defaults();
  
-server.set('strict routing', true);
+server.enable('strict routing');
 
 var validRoutes = [
   '/',
   '/about/as/?',
   /page\d+\/?/,
+  '/upload/?'
 ];
 
 server.enable('strict routing');

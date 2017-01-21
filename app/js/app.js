@@ -10,29 +10,30 @@ console, $
    * image gallery
    * * * * * * * * * * * * * * * * */
 
-  var gallery       = $('#gallery'),
-      notFoundUrl   = 'http://ci.memecdn.com/1850732.jpg',
-      itemHtml      = '<div class="photo-container">' + 
-                        '<a href="/" class="mask">' +
-                          '<div class="wrapper">' +
-                            '<span class="tags"></span>' +
-                            '<span class="date"></span>' +
-                            '<span class="author"></span>' +
-                            '<span class="rate"></span>' +
-                            '<div class="icon-heart-o">' +
-                              '<svg><use xlink:href="#heart-o"/></svg>' +
-                            '</div>' +
-                          '</div>' +
-                        '</a>' +
-                      '</div>',
-      root          = 'http://localhost:3000/api/images',
-      options       = {
+  var gallery        = $('#gallery'),
+      notFoundUrl    = 'http://ci.memecdn.com/1850732.jpg',
+      itemHtml       = '<div class="photo-container">' + 
+                         '<a href="/" class="mask">' +
+                           '<div class="wrapper">' +
+                             '<span class="tags"></span>' +
+                             '<span class="date"></span>' +
+                             '<span class="author"></span>' +
+                             '<span class="rate"></span>' +
+                             '<div class="icon-heart-o">' +
+                               '<svg><use xlink:href="#heart-o"/></svg>' +
+                             '</div>' +
+                           '</div>' +
+                         '</a>' +
+                       '</div>',
+      root           = 'http://localhost:3000/api/images',
+      defaultOptions = {
         page: 1,
         lastPage: 0,
         itemsPerPage: 10,
         sort: 'date',
         order: 'DESC'
-      };
+      },
+      options        = defaultOptions;
 
 
   /**
@@ -50,6 +51,11 @@ console, $
    * @return {Deffered} - JQuery deffered object.
    */
   function renderGallery() {
+    $('.visible').each(function(index, e) {
+      $(e).removeClass('visible');
+    });
+    $('#gallery-section').addClass('visible');
+
     var url = root + '?_page=' + options.page + '&_limit=' + options.itemsPerPage;
     if (options.sort) {
       url += '&_sort=' + options.sort;
@@ -83,26 +89,7 @@ console, $
   }
 
   /**
-   * Updating last page number. Sending ajax request for getting header,
-   * which contains total count of records in base.
-   * @return {Deffered} - JQuery deffered object.
-   */
-  function updateLastPageNumber() {
-    return $.ajax({
-      method: 'GET',
-      dataType: 'json',
-      url: root + '?_page=0_limit=1'
-    })
-    .done(function(data, status, xhr) {
-      options.lastPage = Math.floor((xhr.
-        getResponseHeader('X-Total-Count') - 1) / 10 + 1);
-    })
-    .fail(function() {
-    });
-  }
-
-  /**
-   * Injecting and image that represented by JSON object @data into gallery.
+   * Injecting item with image inside that represented by JSON object @data into gallery.
    */
   function injectItem(data) {
     data.url = data.url || notFoundUrl;
@@ -131,11 +118,10 @@ console, $
         });
         that.find('use').attr('xlink:href', '#heart');
         var rateNode = that.parent().find('.rate').first();
-        console.log(rateNode);
         rateNode.text(+rateNode.text() + 1);
       })
       .fail(function() {
-        console.log('You can\'t like now. Try again later');
+        $('main').prepend('You can\'t like now. Try again later');
       });
     
     });
@@ -143,6 +129,12 @@ console, $
     e.css('background-image', 'url(' + data.url + ')').appendTo(gallery);
   }
 
+  /**
+   * @id - Object's id that will be updated.
+   * GET http request for getting current image's rate.
+   * PATCH http request for updating image's rate state on the server.
+   * @return {Deffered} - JQuery deffered object.
+   */
   function doLike(id) {
     return $.ajax({
       method: 'GET',
@@ -164,8 +156,64 @@ console, $
         timeout: 3000
       })
       .fail(function() {
-        console.log('You can\'t like now. Try again later');
+        $('main').prepend('You can\'t like now. Try again later');
       });
+    });
+  }
+
+  /**
+   * Updating last page number. Sending ajax request for getting header,
+   * which contains total count of records in base.
+   * @return {Deffered} - JQuery deffered object.
+   */
+  function updateLastPageNumber() {
+    return $.ajax({
+      method: 'GET',
+      dataType: 'json',
+      url: root + '?_page=0_limit=1'
+    })
+    .done(function(data, status, xhr) {
+      options.lastPage = Math.floor((xhr.
+        getResponseHeader('X-Total-Count') - 1) / 10 + 1);
+    })
+    .fail(function() {
+    });
+  }
+
+  /**
+   * Renders about page.
+   */
+  function renderUpload() {
+    $('.visible').each(function(index, e) {
+      $(e).removeClass('visible');
+    });
+    $('#upload-section').addClass('visible');
+
+    $('#upload-form').on('submit', function(event) {
+      event.preventDefault();
+      var that = this;
+      $.ajax({
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        url: root,
+        data: JSON.stringify({
+              'url': that.url.value,
+              'usr': that.name.value,
+              'date': new Date(),
+              'rate': "000",
+              'tags': that.tags.value.split(', ')
+        })
+      })
+      .done(function() {
+        Router.navigate('/');
+      })
+      .fail(function() {
+        $('#upload-form').append('When something is going wrong, you see it');
+      });
+
     });
   }
 
@@ -185,6 +233,7 @@ console, $
   /* * * * * * * * * * * * * * * * *
   * Initialization
   * * * * * * * * * * * * * * * * */
+
   var init = function() {
     // configuration
     Router.config({ mode: 'history'});
@@ -208,13 +257,19 @@ console, $
       options.page = parseInt(arguments[0]);
       renderGallery();
     })
+    .add(/upload/, function() {
+      renderUpload();
+    })
     .add(function() {
+      options.sort = defaultOptions.sort;
+      options.order = defaultOptions.order;
       Router.navigate('page1');
     })
     .listen();
 
-    Router.check();
+    Router.check(); // check current URL
 
+    // init paginate
     updateLastPageNumber()
     .done(function() {
       Pagination.init(document.getElementById('pagination'), {

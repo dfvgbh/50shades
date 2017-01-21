@@ -38,11 +38,11 @@
             <ul>
               <li><a href="/page2?_sort=rate&order=DESC">Most Popular</a></li>
               <li><a href="/">Recent</a></li>
-              <li><a href="/">Upload</a></li>
+              <li><a href="../upload">Upload</a></li>
             </ul>
           </li>
-          <li><a href="/">About</a></li>
-          <li><a href="/">Contact</a></li>
+          <li><a href="/">About us</a></li>
+          <li><a href="/">Contacts</a></li>
           <li>
             <a href="/">
               <div class="icon-sign-in">
@@ -59,7 +59,7 @@
                   <span class="separator">&#183;</span>
                   <a class="forgot" href="/">Forgot password?</a>
                 </div>
-                <input type="submit" class="login-form-submitbtn" value="Log in"> 
+                <input type="submit" class="login-form-submit" value="Log in"> 
               </form>
               <hr>
               <div class="signup-header">Haven't account?</div>
@@ -96,10 +96,21 @@
     </div>
   </header>
   <main>
-    <section id="gallery-section">
+    <section id="gallery-section" class="visible">
       <h3>Recently added photos</h3>
       <div id="gallery"></div>
       <div id="pagination"></div>    
+    </section>
+    <section id="upload-section">
+      <h3>Add your photo:</h3>
+      <div id="upload-wrapper">
+        <form action="/" id="upload-form" method="post">
+          <label>Your name:<input type="text" class="name-input" name="name" placeholder="Tony.Stark" required="required"></label>
+          <label>URL:<input type="url" class="url-input" name="url" autocomplete="on" placeholder="http://spacex.com/spacex.jpg" required="required"></label>
+          <label>Tags:<input type="text" class="tags-input" name="tags" placeholder="space, rocket, musk" required="required"></label>
+          <input type="submit" class="upload-form-submit" value="UPLOAD"> 
+        </form>
+      </div>
     </section>
   </main>
   <footer>footer</footer>
