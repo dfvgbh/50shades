@@ -1,11 +1,11 @@
 ## Photo Gallery
 
-Project for sharing, enjoying, pirating photos.
+Web application for sharing, enjoying, pirating photos.
 
 ## How to run
 
 ```bash
-1. npm install       // for first run
+1. npm install       // for the first run
 2. node server.js
 3. gulp
 ```
@@ -13,7 +13,7 @@ Project for sharing, enjoying, pirating photos.
 ## How to build
 
 ```bash
-1. npm install       // for first run
+1. npm install       // for the first run
 2. gulp build
 ```
-Builds in **dist** directory.
+Builds to **dist** directory.
