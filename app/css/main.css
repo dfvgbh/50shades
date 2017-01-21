@@ -433,16 +433,13 @@ main #gallery-section #gallery {
     width: 100%;
     position: absolute;
     top: 0;
-    height: 420px; }
+    height: 420px;
+    will-change: opacity; }
     .my-slider .slide img {
       max-width: 100%;
       max-height: 100%;
       min-width: 100%;
       min-height: 100%;
-      -o-object-fit: cover;
-         object-fit: cover;
-      -o-object-position: center;
-         object-position: center;
       -webkit-user-select: none;
          -moz-user-select: none;
           -ms-user-select: none;
@@ -494,11 +491,12 @@ body {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     background: #111;
-    padding: 0 20px;
+    padding: 0 3%;
     height: 50px;
     width: 100%;
     z-index: 9999;
-    position: fixed; }
+    position: fixed;
+    will-change: opacity; }
     #top-navbar .nav-wrapper #nav-search .nav-search-form {
       float: left;
       margin-top: 8px;
@@ -566,6 +564,17 @@ body {
           color: #eee; }
           #top-navbar .nav-wrapper #nav-menu ul > li > a:hover {
             color: white; }
+        #top-navbar .nav-wrapper #nav-menu ul > li .icon-sign-in {
+          display: inline-block;
+          fill: #eee; }
+          #top-navbar .nav-wrapper #nav-menu ul > li .icon-sign-in:hover {
+            fill: white; }
+          #top-navbar .nav-wrapper #nav-menu ul > li .icon-sign-in svg {
+            height: 100%;
+            width: 28px;
+            top: 0;
+            left: -5px;
+            position: absolute; }
         #top-navbar .nav-wrapper #nav-menu ul > li ul, #top-navbar .nav-wrapper #nav-menu ul > li #login-container {
           display: none;
           position: absolute;
@@ -682,6 +691,20 @@ body {
       -webkit-transition: background .4s;
       transition: background .4s; }
 
+.no-inlinesvg .icon-sign-in {
+  font-size: 10px;
+  width: 30px; }
+
+.no-inlinesvg .icon-sign-in:before {
+  content: ' ';
+  zoom: 0.25;
+  vertical-align: middle;
+  display: inline-block;
+  background: url("../images/sprite.png") no-repeat;
+  background-position: 0em -60em;
+  width: 12em;
+  height: 12em; }
+
 #info-container {
   text-align: center;
   padding: 100px 20px 0;
@@ -738,7 +761,7 @@ body {
 main {
   margin: 50px 3%; }
   main #gallery-section #gallery .photo-container {
-    width: 24.4%;
+    width: 32.8%;
     margin-right: 0.8%;
     margin-bottom: 0.8%;
     float: left;
@@ -748,12 +771,51 @@ main {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover; }
-    main #gallery-section #gallery .photo-container:nth-child(4n) {
+    main #gallery-section #gallery .photo-container:nth-child(3n) {
       margin-right: 0; }
-    main #gallery-section #gallery .photo-container .photo-item {
-      display: block;
+    main #gallery-section #gallery .photo-container:hover .mask {
+      opacity: 1; }
+    main #gallery-section #gallery .photo-container .mask {
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      padding: 12px;
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      font-size: .9em;
+      opacity: 0;
+      overflow: visible;
+      background-color: rgba(0, 0, 0, 0.7);
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out; }
+      main #gallery-section #gallery .photo-container .mask .wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative; }
+        main #gallery-section #gallery .photo-container .mask .wrapper .date {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          font-size: 0.9em; }
+        main #gallery-section #gallery .photo-container .mask .wrapper .author {
+          position: absolute;
+          left: 0;
+          bottom: 1.1em; }
+        main #gallery-section #gallery .photo-container .mask .wrapper .rate {
+          position: absolute;
+          right: 26px;
+          bottom: 5px; }
+        main #gallery-section #gallery .photo-container .mask .wrapper .icon-heart-o {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          fill: #fff;
+          stroke: #fff; }
+          main #gallery-section #gallery .photo-container .mask .wrapper .icon-heart-o svg {
+            width: 20px;
+            height: 20px; }
   main #gallery-section #pagination {
     width: 100%;
     text-align: center;

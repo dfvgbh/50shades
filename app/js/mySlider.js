@@ -6,11 +6,11 @@ console, $
   'use strict';
 
   var currentIndex = 0,
-      prevIndex = -1,
-      items = $('.my-slider .slide'),
-      itemsCount = items.length,
+      prevIndex    = -1,
+      items        = $('.my-slider .slide'),
+      itemsCount   = items.length,
       slideTimeout = 6000,
-      defFadeTime = 1500,
+      defFadeTime  = 1500,
       fastFadeTime = 400;
 
   function cycleItems(fadeTime) {

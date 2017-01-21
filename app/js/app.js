@@ -12,14 +12,26 @@ console, $
 
   var gallery       = $('#gallery'),
       notFoundUrl   = 'http://ci.memecdn.com/1850732.jpg',
-      itemHtml      = '<div class="photo-container"><a href="/"class="photo-item"></a></div>',
+      itemHtml      = '<div class="photo-container">' + 
+                        '<a href="/" class="mask">' +
+                          '<div class="wrapper">' +
+                            '<span class="tags"></span>' +
+                            '<span class="date"></span>' +
+                            '<span class="author"></span>' +
+                            '<span class="rate"></span>' +
+                            '<div class="icon-heart-o">' +
+                              '<svg><use xlink:href="#heart-o"/></svg>' +
+                            '</div>' +
+                          '</div>' +
+                        '</a>' +
+                      '</div>',
       root          = 'http://localhost:3000/api/images',
       options       = {
         page: 1,
         lastPage: 0,
         itemsPerPage: 10,
-        sort: '',
-        order: 'ASC'
+        sort: 'date',
+        order: 'DESC'
       };
 
 
@@ -94,10 +106,70 @@ console, $
    */
   function injectItem(data) {
     data.url = data.url || notFoundUrl;
-    $(itemHtml).css('background-image', 'url(' + data.url + ')').appendTo(gallery);
+    var e = $(itemHtml).clone();
+    e.find('.mask').attr('href', data.url);
+    e.find('.author').text('by ' + data.usr);
+    e.find('.date').text(new Date(data.date).toLocaleDateString());
+    e.find('.tags').text(data.tags.toString().replace(/\,/g, ', '));
+    e.find('.rate').text(data.rate.replace(/^0*/, ''));
+
+    e.find('.icon-heart-o').hover(function() {            // hover in
+      $(this).find('use').attr('xlink:href', '#heart');
+    },
+    function() {                                          // hover out
+      $(this).find('use').attr('xlink:href', '#heart-o');
+    }).on('click', function(event) {                      // on click on heart
+      var that = $(this);
+      event.preventDefault();
+      doLike(data.id)
+      .done(function() {
+        that.off('mouseenter');
+        that.off('mouseleave');
+        that.off('click');
+        that.on('click', function(event) {
+          event.preventDefault();
+        });
+        that.find('use').attr('xlink:href', '#heart');
+        var rateNode = that.parent().find('.rate').first();
+        console.log(rateNode);
+        rateNode.text(+rateNode.text() + 1);
+      })
+      .fail(function() {
+        console.log('You can\'t like now. Try again later');
+      });
+    
+    });
+
+    e.css('background-image', 'url(' + data.url + ')').appendTo(gallery);
   }
 
-  function GetURLParameter(sParam) {
+  function doLike(id) {
+    return $.ajax({
+      method: 'GET',
+      dataType: 'json',
+      url: root + '/' + id,
+      timeout: 3000
+    })
+    .done(function(data, status, xhr) {    
+      var rate = +data.rate + 1;
+      // pad left with zeroes for 3-length number
+      var pad = new Array(4).join('0');
+      rate = (pad + rate).slice(-pad.length);
+
+      $.ajax({
+        method: 'PATCH',
+        dataType: 'json',
+        data: 'rate=' + rate,
+        url: root + '/' + id,
+        timeout: 3000
+      })
+      .fail(function() {
+        console.log('You can\'t like now. Try again later');
+      });
+    });
+  }
+
+  function getURLParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
 
@@ -125,8 +197,8 @@ console, $
         console.log('products', arguments);
     })
     .add(/page(\d+)/, function() {
-      var sort = GetURLParameter('_sort');
-      var order = GetURLParameter('_order');
+      var sort = getURLParameter('_sort');
+      var order = getURLParameter('_order');
       if (sort) {
         options.sort = sort;
       }
@@ -154,7 +226,6 @@ console, $
           }
       });
     });
-
 
 
   };

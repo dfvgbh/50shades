@@ -88,7 +88,7 @@ gulp.task('svg-sprite', function() {
         maxWidth  : 120,
         maxHeight : 120
       },
-      dest        : 'out/intermediate-svg'  // Keep the intermediate files 
+      dest        : 'intermediate-svg'  // Keep the intermediate files 
     },
     mode          : {
       view        : {     // Activate the «view» mode 
@@ -103,17 +103,17 @@ gulp.task('svg-sprite', function() {
 
   return gulp.src('./app/images/svg/*.svg')
     .pipe(svgSprite(config))
-    .pipe(gulp.dest('./app/images/sprite'));
+    .pipe(gulp.dest('./app/images/svg_sprite'));
 });
 
-// create PNG sprite
+// create PNG sprite from SVGs
 gulp.task('png-sprite', function () {
-  return gulp.src('./app/images/sprite/out/intermediate-svg/*.svg')
+  return gulp.src('./app/images/svg_sprite/intermediate-svg/*.svg')
     .pipe(svgSpritesPNG())
-    .pipe(gulp.dest('./app/images/pngsprite')) // Write the sprite-sheet + CSS + Preview 
+    .pipe(gulp.dest('./app/images/png-sprite')) // Write the sprite-sheet + CSS + Preview 
     .pipe(filter('**/*.svg'))  // Filter out everything except the SVG file
     .pipe(svg2png())           // Create a PNG 
-    .pipe(gulp.dest('./app/images/pngsprite'));
+    .pipe(gulp.dest('./app/images/png-sprite'));
 });
 
 // build
