@@ -11,7 +11,7 @@ console, $
    * * * * * * * * * * * * * * * * */
 
   var gallery        = $('#gallery'),
-      notFoundUrl    = 'http://ci.memecdn.com/1850732.jpg',
+      notFoundUrl    = './images/notFound.png',
       itemHtml       = '<div class="photo-container">' + 
                          '<a href="/" class="mask">' +
                            '<div class="wrapper">' +
@@ -31,19 +31,11 @@ console, $
         lastPage: 0,
         itemsPerPage: 10,
         sort: 'date',
-        order: 'DESC'
+        order: 'DESC',
+        search: ''
       },
       options        = defaultOptions;
 
-
-  /**
-   * Makes url, calls Router.navigate.
-   */
-  function navigate() {
-    var url = '/page' + options.page;
-
-    Router.navigate(url);
-  }
 
   /**
    * Sends request to get an array of images refered to the @page. 
@@ -62,6 +54,18 @@ console, $
     }
     if (options.order === 'DESC') {
       url += '&_order=DESC';
+    }
+    if (options.search) {
+      url += '&tags_like=' + options.search;
+    }
+
+    var title = $('#gallery-section h3');
+    if (options.search) {
+      title.text('Search results:');
+    } else if (options.sort == 'rate') {
+      title.text('Most popular photos:');
+    } else if (options.sort == 'date') {
+      title.text('Recently added photos:');
     }
 
     return $.ajax({
@@ -130,9 +134,9 @@ console, $
   }
 
   /**
-   * @id - Object's id that will be updated.
    * GET http request for getting current image's rate.
    * PATCH http request for updating image's rate state on the server.
+   * @param {number} id - Object's id that will be updated.
    * @return {Deffered} - JQuery deffered object.
    */
   function doLike(id) {
@@ -166,15 +170,44 @@ console, $
    * which contains total count of records in base.
    * @return {Deffered} - JQuery deffered object.
    */
-  function updateLastPageNumber() {
+  function updatePagination() {
+    var lastPage = 0;
+    var url = root + '?_page=0_limit=1';
+
+    if (options.search) {
+      url += '&tags_like=' + options.search;
+    }
+
     return $.ajax({
       method: 'GET',
       dataType: 'json',
-      url: root + '?_page=0_limit=1'
+      url: url
     })
     .done(function(data, status, xhr) {
-      options.lastPage = Math.floor((xhr.
+      lastPage = Math.floor((xhr.
         getResponseHeader('X-Total-Count') - 1) / 10 + 1);
+    })
+    .done(function() {
+      if (lastPage === 0) {
+        $('#gallery-section').append('No results');
+        return;
+      }
+      if (lastPage == options.lastPage) {
+        return;
+      }
+      options.lastPage = lastPage;
+      Pagination.init(document.getElementById('pagination'), {
+          size: options.lastPage,
+          page: options.page,
+          step: 2,
+          callback: function(page) {
+            if (options.search) {
+              Router.navigate('search/page' + page);
+            } else {
+              Router.navigate('page' + page);
+            }
+          }
+      });
     })
     .fail(function() {
     });
@@ -237,6 +270,11 @@ console, $
     $('#contacts-section').addClass('visible');
   }
 
+  /**
+   * Parse URL param.
+   * @param {string} sParam - Param that will be returned.
+   * @return - value of @sParam.
+   */
   function getURLParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
@@ -259,15 +297,23 @@ console, $
     Router.config({ mode: 'history'});
 
     Router
+    .add(/popular\/page(\d+)/, function() {
+      options.sort = 'rate';
+      options.order = 'DESC';
+      options.search = '';
+      options.page = parseInt(arguments[0]);
+      renderGallery();
+    })
+    .add(/search\/page(\d+)/, function() {
+      options.sort = 'rate';
+      options.order = 'DESC';
+      options.page = parseInt(arguments[0]);
+      renderGallery();
+    })
     .add(/page(\d+)/, function() {
-      var sort = getURLParameter('_sort');
-      var order = getURLParameter('_order');
-      if (sort) {
-        options.sort = sort;
-      }
-      if (order && order === 'DESC' || order === 'ASC') {
-        options.order = order;
-      }
+      options.sort = 'date';
+      options.order = 'DESC';
+      options.search = '';
       options.page = parseInt(arguments[0]);
       renderGallery();
     })
@@ -281,27 +327,25 @@ console, $
       renderContacts();
     })
     .add(function() {
-      options.sort = defaultOptions.sort;
-      options.order = defaultOptions.order;
+      options = defaultOptions;
       Router.navigate('page1');
     })
     .listen();
 
     Router.check(); // check current URL
 
-    // init paginate
-    updateLastPageNumber()
-    .done(function() {
-      Pagination.init(document.getElementById('pagination'), {
-          size: options.lastPage,
-          page: options.page,
-          step: 2,
-          callback: function(page) {
-            Router.navigate('/page' + page);
-          }
+    // update/init paginate
+    updatePagination();
+
+    $('.search-button').each(function(index, e) {
+      $(e).on('click', function(event) {
+        event.preventDefault();
+        options.search = $(this).parent().find('input').val();
+        updatePagination();
+        Router.navigate('search/page1');
+        Router.check();
       });
     });
-
 
   };
 

@@ -20,8 +20,8 @@
     <div class="nav-wrapper nav-wrapper-transparent">
       <div id="nav-search">
         <form class="nav-search-form" action="/" role="search" >
-          <input required="required" placeholder="Search" name="nav-search-input" type="search">
-          <button name="nav-search-button" >
+          <input required="required" placeholder="Search" name="search" type="search">
+          <button class="search-button" name="nav-search-button" >
             <svg class="icon-search"><use xlink:href="#search" /></svg>
           </button>
         </form>
@@ -33,10 +33,10 @@
       </div>
       <div id="nav-menu">
         <ul>
-          <li><a href="/">Gallery</a>
+          <li><a href="../page1">Gallery</a>
             <ul>
-              <li><a href="/page2?_sort=rate&order=DESC">Most Popular</a></li>
-              <li><a href="/">Recent</a></li>
+              <li><a href="../popular/page1">Most Popular</a></li>
+              <li><a href="../page1">Recent</a></li>
               <li><a href="../upload">Upload</a></li>
             </ul>
           </li>
@@ -83,8 +83,8 @@
         <h1 id="main-title">50 SHADES</h1>
         <h2 id="main-description">Mr. Black will see you now</h2>
         <form id="header-search-form" action="/" role="search" >
-          <input required="required" placeholder="Search" name="header-search-input" type="search">
-          <button name="header-search-button" >
+          <input required="required" placeholder="Search" name="search" type="search">
+          <button class="search-button" name="header-search-button">
             <svg class="icon-search"><use xlink:href="#search" /></svg>
           </button>
         </form>
@@ -96,7 +96,7 @@
   </header>
   <main>
     <section id="gallery-section" class="visible">
-      <h3>Recently added photos</h3>
+      <h3></h3>
       <div id="gallery"></div>
       <div id="pagination"></div>    
     </section>

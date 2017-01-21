@@ -12,6 +12,8 @@ server.enable('strict routing');
 
 var validRoutes = [
   '/',
+  '/search/?',
+  '/popular/?',
   /page\d+\/?/,
   '/upload/?',
   '/about/?',
