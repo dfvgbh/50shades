@@ -18,6 +18,12 @@ console, $, Modernizr
         $(e).attr('href', href.replace(/\//, '#'));
       }); 
     }
+
+    // map map map
+    var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 50.448882, lng: 30.457254},
+            zoom: 15
+    });
   }
 
   $(function() {

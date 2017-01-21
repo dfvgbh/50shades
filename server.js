@@ -12,9 +12,10 @@ server.enable('strict routing');
 
 var validRoutes = [
   '/',
-  '/about/as/?',
   /page\d+\/?/,
-  '/upload/?'
+  '/upload/?',
+  '/about/?',
+  '/contacts/?'
 ];
 
 server.enable('strict routing');

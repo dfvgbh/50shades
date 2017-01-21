@@ -181,7 +181,7 @@ console, $
   }
 
   /**
-   * Renders about page.
+   * Renders upload page.
    */
   function renderUpload() {
     $('.visible').each(function(index, e) {
@@ -217,6 +217,26 @@ console, $
     });
   }
 
+  /**
+   * Renders about page.
+   */
+  function renderAbout() {
+    $('.visible').each(function(index, e) {
+      $(e).removeClass('visible');
+    });
+    $('#aboutus-section').addClass('visible');
+  }
+
+  /**
+   * Renders contacts page.
+   */
+  function renderContacts() {
+    $('.visible').each(function(index, e) {
+      $(e).removeClass('visible');
+    });
+    $('#contacts-section').addClass('visible');
+  }
+
   function getURLParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
@@ -239,12 +259,6 @@ console, $
     Router.config({ mode: 'history'});
 
     Router
-    .add(/about\/$/, function() {
-        console.log('about');
-    })
-    .add(/products\/(.*)\/edit\/(.*)/, function() {
-        console.log('products', arguments);
-    })
     .add(/page(\d+)/, function() {
       var sort = getURLParameter('_sort');
       var order = getURLParameter('_order');
@@ -259,6 +273,12 @@ console, $
     })
     .add(/upload/, function() {
       renderUpload();
+    })
+    .add(/about/, function() {
+      renderAbout();
+    })
+    .add(/contacts/, function() {
+      renderContacts();
     })
     .add(function() {
       options.sort = defaultOptions.sort;
