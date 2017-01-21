@@ -1,7 +1,7 @@
 @import 'normalize';
-@import 'mixins';
 @import 'default-skin';
 @import 'my-slider';
+@import 'mixins';
 
 body {
   font-family: Verdana, Arial;
@@ -377,11 +377,11 @@ main {
 
   #gallery-section {
 
-    #gallery {
+    .gallery {
       @extend %clearfix;
 
       .photo-container {
-        @include columns(3, .8);
+        @include columns(4, .8);
         height: 250px;
         box-sizing: border-box;
         background-repeat: no-repeat;

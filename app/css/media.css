@@ -1,0 +1,73 @@
+/**
+ * Just clearfix. Not mixin, has to be extended via @extend.
+ */
+/**
+ * Generates styles for responsive columns with percantage width.
+ * @param num - number of columns.
+ * @param margin - the percantage (e.g. 5, or 15, or .5) value, bottom and right margin of this element (except last child in a row).
+ */
+@media screen and (min-width: 761px) and (max-width: 1280px) {
+  body #gallery-section.visible .gallery .photo-container {
+    margin: 0;
+    width: 32.8%;
+    margin-right: 0.8%;
+    margin-bottom: 0.8%;
+    float: left; }
+    body #gallery-section.visible .gallery .photo-container:nth-child(3n) {
+      margin-right: 0; } }
+
+@media screen and (min-width: 660px) and (max-width: 760px) {
+  body #gallery-section.visible .gallery .photo-container {
+    margin: 0;
+    width: 32.8%;
+    margin-right: 0.8%;
+    margin-bottom: 0.8%;
+    float: left; }
+    body #gallery-section.visible .gallery .photo-container:nth-child(3n) {
+      margin-right: 0; }
+  body #top-navbar .nav-wrapper #nav-search {
+    display: none; }
+  body #top-navbar .nav-wrapper #nav-logo {
+    display: none; }
+  body #upload-section #upload-wrapper #upload-form {
+    width: 70%; } }
+
+@media screen and (min-width: 480px) and (max-width: 659px) {
+  body #gallery-section.visible .gallery .photo-container {
+    margin: 0;
+    width: 49.6%;
+    margin-right: 0.8%;
+    margin-bottom: 0.8%;
+    float: left; }
+    body #gallery-section.visible .gallery .photo-container:nth-child(2n) {
+      margin-right: 0; }
+  body #top-navbar .nav-wrapper #nav-search {
+    display: none; }
+  body #top-navbar .nav-wrapper #nav-logo {
+    display: none; }
+  body .my-slider .controll-prev, body .my-slider .controll-next {
+    display: none; }
+  body #upload-section #upload-wrapper #upload-form {
+    width: 80%; } }
+
+@media screen and (max-width: 479px) {
+  body #gallery-section.visible .gallery .photo-container {
+    margin: 0;
+    width: 100%;
+    margin-right: 0.8%;
+    margin-bottom: 0.8%;
+    float: left; }
+    body #gallery-section.visible .gallery .photo-container:nth-child(1n) {
+      margin-right: 0; }
+  body #top-navbar .nav-wrapper {
+    padding: 0 10px; }
+    body #top-navbar .nav-wrapper #nav-menu li > a {
+      padding: 0 8px; }
+    body #top-navbar .nav-wrapper #nav-search {
+      display: none; }
+    body #top-navbar .nav-wrapper #nav-logo {
+      display: none; }
+  body .my-slider .controll-prev, body .my-slider .controll-next {
+    display: none; }
+  body #upload-section #upload-wrapper #upload-form {
+    width: 90%; } }

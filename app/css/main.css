@@ -405,22 +405,6 @@ template {
 [hidden] {
   display: none; }
 
-/**
- * Just clearfix. Not mixin, has to be extended via @extend.
- */
-main #gallery-section #gallery {
-  *zoom: 1; }
-  main #gallery-section #gallery:before, main #gallery-section #gallery:after {
-    content: '';
-    display: table; }
-  main #gallery-section #gallery:after {
-    clear: both; }
-
-/**
- * Generates styles for responsive columns with percantage width.
- * @param num - number of columns.
- * @param margin - the percantage (e.g. 5, or 15, or .5) value, bottom and right margin of this element (except last child in a row).
- */
 .my-slider {
   margin: 0;
   padding: 0;
@@ -481,6 +465,22 @@ main #gallery-section #gallery {
   width: 12em;
   height: 12em; }
 
+/**
+ * Just clearfix. Not mixin, has to be extended via @extend.
+ */
+main #gallery-section .gallery {
+  *zoom: 1; }
+  main #gallery-section .gallery:before, main #gallery-section .gallery:after {
+    content: '';
+    display: table; }
+  main #gallery-section .gallery:after {
+    clear: both; }
+
+/**
+ * Generates styles for responsive columns with percantage width.
+ * @param num - number of columns.
+ * @param margin - the percantage (e.g. 5, or 15, or .5) value, bottom and right margin of this element (except last child in a row).
+ */
 body {
   font-family: Verdana, Arial;
   color: #333; }
@@ -762,8 +762,9 @@ main {
   margin: 40px 3%; }
   main section {
     display: none; }
-  main #gallery-section #gallery .photo-container {
-    width: 32.8%;
+  main #gallery-section .gallery .photo-container {
+    margin: 0;
+    width: 24.4%;
     margin-right: 0.8%;
     margin-bottom: 0.8%;
     float: left;
@@ -773,11 +774,11 @@ main {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover; }
-    main #gallery-section #gallery .photo-container:nth-child(3n) {
+    main #gallery-section .gallery .photo-container:nth-child(4n) {
       margin-right: 0; }
-    main #gallery-section #gallery .photo-container:hover .mask {
+    main #gallery-section .gallery .photo-container:hover .mask {
       opacity: 1; }
-    main #gallery-section #gallery .photo-container .mask {
+    main #gallery-section .gallery .photo-container .mask {
       width: 100%;
       height: 100%;
       -webkit-box-sizing: border-box;
@@ -792,30 +793,30 @@ main {
       background-color: rgba(0, 0, 0, 0.7);
       -webkit-transition: all .4s ease-in-out;
       transition: all .4s ease-in-out; }
-      main #gallery-section #gallery .photo-container .mask .wrapper {
+      main #gallery-section .gallery .photo-container .mask .wrapper {
         width: 100%;
         height: 100%;
         position: relative; }
-        main #gallery-section #gallery .photo-container .mask .wrapper .date {
+        main #gallery-section .gallery .photo-container .mask .wrapper .date {
           position: absolute;
           left: 0;
           bottom: 0;
           font-size: 0.9em; }
-        main #gallery-section #gallery .photo-container .mask .wrapper .author {
+        main #gallery-section .gallery .photo-container .mask .wrapper .author {
           position: absolute;
           left: 0;
           bottom: 1.1em; }
-        main #gallery-section #gallery .photo-container .mask .wrapper .rate {
+        main #gallery-section .gallery .photo-container .mask .wrapper .rate {
           position: absolute;
           right: 26px;
           bottom: 5px; }
-        main #gallery-section #gallery .photo-container .mask .wrapper .icon-heart-o {
+        main #gallery-section .gallery .photo-container .mask .wrapper .icon-heart-o {
           position: absolute;
           right: 0;
           bottom: 0;
           fill: #fff;
           stroke: #fff; }
-          main #gallery-section #gallery .photo-container .mask .wrapper .icon-heart-o svg {
+          main #gallery-section .gallery .photo-container .mask .wrapper .icon-heart-o svg {
             width: 20px;
             height: 20px; }
   main #gallery-section #pagination {

@@ -1,0 +1,117 @@
+@import 'mixins';
+
+
+@media screen and (min-width: 761px) and (max-width: 1280px) {
+  body {
+    #gallery-section.visible {
+      .gallery{
+        .photo-container {
+          @include columns(3, .8);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 660px) and (max-width: 760px) {
+  body {
+    #gallery-section.visible {
+      .gallery{
+        .photo-container {
+          @include columns(3, .8);
+        }
+      }
+    }
+    #top-navbar {
+      .nav-wrapper {
+        #nav-search {
+          display: none;
+        }
+        #nav-logo {
+          display: none;
+        }
+      }
+    }
+    #upload-section {
+      #upload-wrapper {
+        #upload-form {
+          width: 70%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 659px) {
+  body {
+    #gallery-section.visible {
+      .gallery{
+        .photo-container {
+          @include columns(2, .8);
+        }
+      }
+    }
+    #top-navbar {
+      .nav-wrapper {
+        #nav-search {
+          display: none;
+        }
+        #nav-logo {
+          display: none;
+        }
+      }
+    }
+    .my-slider {
+      .controll-prev, .controll-next {
+        display: none;
+      }
+    }
+    #upload-section {
+      #upload-wrapper {
+        #upload-form {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  body {
+    #gallery-section.visible {
+      .gallery{
+        .photo-container {
+          @include columns(1, .8);
+        }
+      }
+    }
+    #top-navbar {
+      .nav-wrapper {
+        padding: 0 10px;
+        #nav-menu {
+          li > a {
+            padding: 0 8px;
+          }
+        }
+        #nav-search {
+          display: none;
+        }
+        #nav-logo {
+          display: none;
+        }
+      }
+    }
+    .my-slider {
+      .controll-prev, .controll-next {
+        display: none;
+      }
+    }
+    #upload-section {
+      #upload-wrapper {
+        #upload-form {
+          width: 90%;
+        }
+      }
+    }
+  }
+}

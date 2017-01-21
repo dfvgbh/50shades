@@ -10,7 +10,7 @@ console, $
    * image gallery
    * * * * * * * * * * * * * * * * */
 
-  var gallery        = $('#gallery'),
+  var gallery        = $('.gallery'),
       notFoundUrl    = './images/notFound.png',
       itemHtml       = '<div class="photo-container">' + 
                          '<a href="/" class="mask">' +

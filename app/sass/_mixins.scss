@@ -18,8 +18,11 @@
  * @param margin - the percantage (e.g. 5, or 15, or .5) value, bottom and right margin of this element (except last child in a row).
  */
 @mixin columns($num, $margin) {
+  margin: 0;
   width: percentage((1 - (.01 * $margin * ($num - 1))) / $num );
+
   margin-right: $margin * 1%;
+  
   margin-bottom: $margin * 1%;
   float: left;
 
