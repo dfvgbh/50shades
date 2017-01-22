@@ -273,33 +273,6 @@ body {
   }
 }
 
-.no-inlinesvg .icon-sign-in {
-  font-size: 10px;
-  width: 30px;
-}
-
-.no-inlinesvg .icon-sign-in:before{
-  content: ' ';
-  zoom: 0.25;
-  vertical-align: middle;
-  display: inline-block;
-  background: url('../images/sprite.png') no-repeat;
-  background-position: 0em -60em;
-  width: 12em;
-  height: 12em;
-}
-
-.no-cssgradients .nav-wrapper-transparent {
-  // -ms-filter: progid:DXImageTransform.Microsoft.gradient(
-  //   startColorstr=#95111111, endColorstr=#00FFFFFF
-  // );
-  // filter: progid:DXImageTransform.Microsoft.gradient(
-  //   startColorstr=#95111111, endColorstr=#00FFFFFF
-  // );
-
-}
-
-
 #info-container {
   text-align: center;
   padding: 100px 20px 0;
@@ -580,6 +553,35 @@ main {
   }
 }
 
+.no-inlinesvg .icon-sign-in {
+  font-size: 10px;
+  width: 30px;
+}
+
+.no-inlinesvg .icon-sign-in:before{
+  content: ' ';
+  zoom: 0.25;
+  vertical-align: middle;
+  display: inline-block;
+  background: url('../images/sprite.png') no-repeat;
+  background-position: 0em -60em;
+  width: 12em;
+  height: 12em;
+}
+
+.no-cssgradients .nav-wrapper-transparent {
+  // -ms-filter: progid:DXImageTransform.Microsoft.gradient(
+  //   startColorstr=#95111111, endColorstr=#00FFFFFF
+  // );
+  // filter: progid:DXImageTransform.Microsoft.gradient(
+  //   startColorstr=#95111111, endColorstr=#00FFFFFF
+  // );
+
+}
+
+.no-nthchild main #gallery-section .photo-container {
+  margin: 0 .6% .6% 0;
+}
 
 footer {
   margin: 30px 0 0;

@@ -44,7 +44,7 @@
     // change page
     click: function(e) {
       
-      Pagination.page = +this.innerHTML;
+      Pagination.page = +e.srcElement.innerHTML;
       Pagination.start();
       Pagination.callback(Pagination.page);
     },
@@ -143,7 +143,7 @@
       ];
 
       e.innerHTML = html.join('');
-      Pagination.e = e.getElementsByClassName('pagination-inner')[0];
+      Pagination.e = e.querySelectorAll('.pagination-inner')[0];
       Pagination.buttons(e);
     },
 

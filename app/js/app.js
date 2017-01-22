@@ -5,11 +5,6 @@ console, $
 ;(function() {
   'use strict';
 
-    /* * * * * * * * * * * * * * * * *
-   * Managing
-   * image gallery
-   * * * * * * * * * * * * * * * * */
-
   var gallery        = $('.gallery'),
       notFoundUrl    = './images/notFound.png',
       itemHtml       = '<div class="photo-container">' + 

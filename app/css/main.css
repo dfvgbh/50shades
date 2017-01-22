@@ -691,20 +691,6 @@ body {
       -webkit-transition: background .4s;
       transition: background .4s; }
 
-.no-inlinesvg .icon-sign-in {
-  font-size: 10px;
-  width: 30px; }
-
-.no-inlinesvg .icon-sign-in:before {
-  content: ' ';
-  zoom: 0.25;
-  vertical-align: middle;
-  display: inline-block;
-  background: url("../images/sprite.png") no-repeat;
-  background-position: 0em -60em;
-  width: 12em;
-  height: 12em; }
-
 #info-container {
   text-align: center;
   padding: 100px 20px 0;
@@ -910,6 +896,23 @@ main {
       height: 350px; }
   main .visible {
     display: block; }
+
+.no-inlinesvg .icon-sign-in {
+  font-size: 10px;
+  width: 30px; }
+
+.no-inlinesvg .icon-sign-in:before {
+  content: ' ';
+  zoom: 0.25;
+  vertical-align: middle;
+  display: inline-block;
+  background: url("../images/sprite.png") no-repeat;
+  background-position: 0em -60em;
+  width: 12em;
+  height: 12em; }
+
+.no-nthchild main #gallery-section .photo-container {
+  margin: 0 .6% .6% 0; }
 
 footer {
   margin: 30px 0 0;

@@ -9,6 +9,7 @@
     "test/svg/inline",
     "test/css/gradients",
     "test/eventlistener",
-    "test/history"
+    "test/history",
+    "test/css/nthchild"
   ]
 }
