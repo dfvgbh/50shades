@@ -942,6 +942,10 @@ main {
 .no-nthchild main #gallery-section .photo-container {
   margin: 0 .6% .6% 0; }
 
+.no-rgba .current {
+  background-color: #333;
+  color: #fff; }
+
 footer {
   margin: 30px 0 0;
   height: 300px;
