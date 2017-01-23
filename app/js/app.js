@@ -112,6 +112,8 @@ console, $
         that.off('mouseenter');
         that.off('mouseleave');
         that.off('click');
+        that.removeClass('icon-heart-o');
+        that.addClass('icon-heart');
         that.on('click', function(event) {
           event.preventDefault();
         });
@@ -331,6 +333,13 @@ console, $
 
     // update/init paginate
     updatePagination();
+
+    $('.nav-search-form').on('submit', function(event) {
+        event.preventDefault();
+    });
+    $('.header-search-form').on('submit', function(event) {
+        event.preventDefault();
+    });
 
     $('.search-button').each(function(index, e) {
       $(e).on('click', function(event) {

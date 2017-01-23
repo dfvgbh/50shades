@@ -526,8 +526,10 @@ body {
         #top-navbar .nav-wrapper #nav-search .nav-search-form button .icon-search {
           height: 20px;
           width: 20px;
-          padding-top: 3px;
           fill: #eee; }
+          #top-navbar .nav-wrapper #nav-search .nav-search-form button .icon-search svg {
+            width: 100%;
+            height: 100%; }
     #top-navbar .nav-wrapper #nav-logo .nav-logo-top {
       position: absolute;
       height: 100%;
@@ -741,8 +743,10 @@ body {
       #info-container #header-search-form button .icon-search {
         height: 25px;
         width: 25px;
-        padding-top: 3px;
         fill: #111; }
+        #info-container #header-search-form button .icon-search svg {
+          width: 100%;
+          height: 100%; }
 
 main {
   margin: 40px 3%; }
@@ -796,13 +800,13 @@ main {
           position: absolute;
           right: 26px;
           bottom: 5px; }
-        main #gallery-section .gallery .photo-container .mask .wrapper .icon-heart-o {
+        main #gallery-section .gallery .photo-container .mask .wrapper .icon-heart-o, main #gallery-section .gallery .photo-container .mask .wrapper .icon-heart {
           position: absolute;
           right: 0;
           bottom: 0;
           fill: #fff;
           stroke: #fff; }
-          main #gallery-section .gallery .photo-container .mask .wrapper .icon-heart-o svg {
+          main #gallery-section .gallery .photo-container .mask .wrapper .icon-heart-o svg, main #gallery-section .gallery .photo-container .mask .wrapper .icon-heart svg {
             width: 20px;
             height: 20px; }
   main #gallery-section #pagination {
@@ -897,19 +901,43 @@ main {
   main .visible {
     display: block; }
 
-.no-inlinesvg .icon-sign-in {
+.no-inlinesvg .icon-sign-in, .no-inlinesvg .icon-search, .no-inlinesvg .icon-heart-o, .no-inlinesvg .icon-heart {
   font-size: 10px;
   width: 30px; }
 
-.no-inlinesvg .icon-sign-in:before {
+.no-inlinesvg #info-container #header-search-form input {
+  background: #5e5e5e;
+  color: #fff;
+  padding: 12px;
+  font-size: 1.1em; }
+
+.no-inlinesvg .icon-sign-in:before,
+.no-inlinesvg .icon-search:before,
+.no-inlinesvg .icon-heart-o:before,
+.no-inlinesvg .icon-heart:before {
   content: ' ';
-  zoom: 0.25;
+  zoom: 0.2;
   vertical-align: middle;
   display: inline-block;
   background: url("../images/sprite.png") no-repeat;
-  background-position: 0em -60em;
+  margin-top: -10px;
   width: 12em;
   height: 12em; }
+
+.no-inlinesvg .icon-search:before {
+  background-position: 0em -48em; }
+
+.no-inlinesvg .icon-sign-in:before {
+  zoom: 0.25;
+  background-position: 0em -60em; }
+
+.no-inlinesvg .icon-heart-o:before {
+  background-position: 0em -36em;
+  margin-left: 40px; }
+
+.no-inlinesvg .icon-heart:before {
+  background-position: 0em -24em;
+  margin-left: 40px; }
 
 .no-nthchild main #gallery-section .photo-container {
   margin: 0 .6% .6% 0; }
