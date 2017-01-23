@@ -200,6 +200,8 @@ console, $
           callback: function(page) {
             if (options.search) {
               Router.navigate('search/page' + page);
+            } else if (options.sort === 'rate') {
+              Router.navigate('popular/page' + page);
             } else {
               Router.navigate('page' + page);
             }
