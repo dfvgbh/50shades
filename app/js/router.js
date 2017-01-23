@@ -12,6 +12,7 @@
       return this;
     },
 
+    // getting the current URL
     getFragment: function() {
       var fragment = '';
       if(this.mode === 'history') {
@@ -29,6 +30,7 @@
       return path.toString().replace(/^\//, '');
     },
 
+    // add route
     add: function(re, handler) {
       if(typeof re == 'function') {
         handler = re;
@@ -38,6 +40,7 @@
       return this;
     },
 
+    // remove route
     remove: function(param) {
       for(var i = 0, r; i < this.routes.length; i++) {
         r = this.routes[i];
@@ -56,6 +59,7 @@
       return this;
     },
 
+    // check current URL
     check: function(f) {
       var fragment = f || this.getFragment();
       for(var i = 0;  i < this.routes.length; i++) {
@@ -69,6 +73,7 @@
       return this;
     },
 
+    // monitoring for changes
     listen: function() {
       var self = this;
       var current = self.getFragment();

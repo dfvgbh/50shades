@@ -38,11 +38,13 @@ console, $
    * @return {Deffered} - JQuery deffered object.
    */
   function renderGallery() {
+    // make it visible
     $('.visible').each(function(index, e) {
       $(e).removeClass('visible');
     });
     $('#gallery-section').addClass('visible');
 
+    // make url
     var url = root + '?_page=' + options.page + '&_limit=' + options.itemsPerPage;
     if (options.sort) {
       url += '&_sort=' + options.sort;
@@ -54,6 +56,7 @@ console, $
       url += '&tags_like=' + options.search;
     }
 
+    // make title
     var title = $('#gallery-section h3');
     if (options.search) {
       title.text('Search results:');
@@ -63,6 +66,7 @@ console, $
       title.text('Recently added photos:');
     }
 
+    // inject items
     return $.ajax({
       method: 'GET',
       dataType: 'json',
@@ -88,25 +92,29 @@ console, $
   }
 
   /**
-   * Injecting item with image inside that represented by JSON object @data into gallery.
+   * Appends item with image to gallery. Item is represented by JSON object @data.
    */
   function injectItem(data) {
-    data.url = data.url || notFoundUrl;
-    var e = $(itemHtml).clone();
-    e.find('.mask').attr('href', data.url);
-    e.find('.author').text('by ' + data.usr);
-    e.find('.date').text(new Date(data.date).toLocaleDateString());
-    e.find('.tags').text(data.tags.toString().replace(/\,/g, ', '));
-    e.find('.rate').text(data.rate.replace(/^0*/, ''));
+    var item = $(itemHtml).clone();
 
-    e.find('.icon-heart-o').hover(function() {            // hover in
+    data.url = data.url || notFoundUrl;
+
+    item.find('.mask').attr('href', data.url);
+    item.find('.author').text('by ' + data.usr);
+    item.find('.date').text(new Date(data.date).toLocaleDateString());
+    item.find('.tags').text(data.tags.toString().replace(/\,/g, ', '));
+    item.find('.rate').text(data.rate.replace(/^0*/, ''));
+
+    item.find('.icon-heart-o').hover(function() {            // hover in
       $(this).find('use').attr('xlink:href', '#heart');
     },
     function() {                                          // hover out
       $(this).find('use').attr('xlink:href', '#heart-o');
     }).on('click', function(event) {                      // on click on heart
-      var that = $(this);
       event.preventDefault();
+      
+      var that = $(this);
+      
       doLike(data.id)
       .done(function() {
         that.off('mouseenter');
@@ -127,7 +135,8 @@ console, $
     
     });
 
-    e.css('background-image', 'url(' + data.url + ')').appendTo(gallery);
+    // append item to gallery
+    item.css('background-image', 'url(' + data.url + ')').appendTo(gallery);
   }
 
   /**
@@ -165,6 +174,7 @@ console, $
   /**
    * Updating last page number. Sending ajax request for getting header,
    * which contains total count of records in base.
+   * Updates Pagination in gallery section.
    * @return {Deffered} - JQuery deffered object.
    */
   function updatePagination() {
@@ -175,6 +185,7 @@ console, $
       url += '&tags_like=' + options.search;
     }
 
+    // getting last page number via ajax request
     return $.ajax({
       method: 'GET',
       dataType: 'json',
@@ -185,7 +196,7 @@ console, $
         getResponseHeader('X-Total-Count') - 1) / 10 + 1);
     })
     .done(function() {
-      if (lastPage === 0) {
+      if (lastPage < 1) {
         $('#gallery-section').append('No results');
         return;
       }
@@ -193,6 +204,8 @@ console, $
         return;
       }
       options.lastPage = lastPage;
+
+      // updating gallery pagination
       Pagination.init(document.getElementById('pagination'), {
           size: options.lastPage,
           page: options.page,
@@ -209,6 +222,7 @@ console, $
       });
     })
     .fail(function() {
+      $('#gallery-section').prepend('Can\'t connect to the server. Try again later');
     });
   }
 
@@ -221,6 +235,7 @@ console, $
     });
     $('#upload-section').addClass('visible');
 
+    // opload form submition
     $('#upload-form').on('submit', function(event) {
       event.preventDefault();
 
@@ -234,6 +249,7 @@ console, $
       }
 
       var that = this;
+
       $.ajax({
         method: 'POST',
         headers: {
@@ -281,6 +297,7 @@ console, $
 
   /**
    * Parse URL param.
+   * Does not used now, but probably will be useful later.
    * @param {string} sParam - Param that will be returned.
    * @return - value of @sParam.
    */
@@ -346,13 +363,16 @@ console, $
     // update/init paginate
     updatePagination();
 
+    // setting events for forms
     $('.nav-search-form').on('submit', function(event) {
         event.preventDefault();
     });
+
     $('.header-search-form').on('submit', function(event) {
         event.preventDefault();
     });
 
+    // setting events for search buttons
     $('.search-button').each(function(index, e) {
       $(e).on('click', function(event) {
         event.preventDefault();
@@ -363,6 +383,7 @@ console, $
       });
     });
 
+    // setting handlers for upload validation
     $('#upload-form .name-input').on('input', function() {
       if (/^[a-zA-Z0-9_-]{4,15}$/.test(this.value)) {
         $(this).css('border', 'solid 1px forestgreen');

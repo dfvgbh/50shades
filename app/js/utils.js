@@ -6,7 +6,7 @@ console, $, Modernizr
   'use strict';
 
   function ready() {
-    // document.scroll not supported in IE8
+    // document.scroll not supported in IE8, using window.scroll instead
     $(window).scroll(function() {
       $('.nav-wrapper').toggleClass('nav-wrapper-transparent', $(this).scrollTop() < 150);
     });
@@ -19,7 +19,7 @@ console, $, Modernizr
       }); 
     }
 
-    // map map map
+    // create map
     var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 50.448882, lng: 30.457254},
             zoom: 15

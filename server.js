@@ -20,8 +20,6 @@ var validRoutes = [
   '/contacts/?'
 ];
 
-server.enable('strict routing');
-
 // sends index.html on request
 function sendIndex(request, response, next) {
   response.sendFile(path.join(__dirname, baseDir, 'index.html'));
