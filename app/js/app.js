@@ -221,6 +221,16 @@ console, $
 
     $('#upload-form').on('submit', function(event) {
       event.preventDefault();
+
+      // validation
+      if (!/^[a-zA-Z0-9_-]{4,15}$/.test(this.name.value) ||
+          !/^[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+\*.~#?&//=]*)?$/
+            .test(this.url.value) ||
+          !/^([a-zA-Z0-9]+,? ?)*?$/.test(this.tags.value) ) {
+        $(this).append('Invalid (not you, your data).'); // simple error handle
+        return false;
+      }
+
       var that = this;
       $.ajax({
         method: 'POST',
@@ -349,6 +359,37 @@ console, $
         Router.navigate('search/page1');
         Router.check();
       });
+    });
+
+    $('#upload-form .name-input').on('input', function() {
+      if (/^[a-zA-Z0-9_-]{4,15}$/.test(this.value)) {
+        $(this).css('border', 'solid 1px forestgreen');
+        $(this).css('box-shadow', '0 0 10px forestgreen');
+      } else {
+        $(this).css('border', 'solid 1px tomato');
+        $(this).css('box-shadow', '0 0 10px tomato');
+      }
+    });
+
+    $('#upload-form .url-input').on('input', function() {
+      if (/^[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+\*.~#?&//=]*)?$/
+        .test(this.value)) {
+        $(this).css('border', 'solid 1px forestgreen');
+        $(this).css('box-shadow', '0 0 10px forestgreen');
+      } else {
+        $(this).css('border', 'solid 1px tomato');
+        $(this).css('box-shadow', '0 0 10px tomato');
+      }
+    });
+
+    $('#upload-form .tags-input').on('input', function() {
+      if (/^([a-zA-Z0-9]+,? ?)*?$/.test(this.value)) {
+        $(this).css('border', 'solid 1px forestgreen');
+        $(this).css('box-shadow', '0 0 10px forestgreen');
+      } else {
+        $(this).css('border', 'solid 1px tomato');
+        $(this).css('box-shadow', '0 0 10px tomato');
+      }
     });
 
   };

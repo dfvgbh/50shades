@@ -852,7 +852,8 @@ main {
         border: 1px solid #111;
         margin: 7px 10px;
         -webkit-box-sizing: border-box;
-                box-sizing: border-box; }
+                box-sizing: border-box;
+        outline: none; }
       main #upload-section #upload-form .upload-form-submit {
         width: 100%;
         -webkit-box-sizing: border-box;
