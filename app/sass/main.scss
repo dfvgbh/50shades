@@ -617,15 +617,21 @@ main {
 }
 
 footer {
-  margin: 30px 0 0;
-  height: 300px;
+  margin: 10px 0 0;
+  padding: 30px 2% 20px;
+  height: 150px;
   width: 100%;
-  background-color: gray;
+  color: #fff;
+  background-color: #444;
   position: relative;
+  box-sizing: border-box;
   a {
-    display: block;
+    color: #fff;
+  }
+
+  .social {
     position: absolute;
-    bottom: 10px;
     right: 10px;
+    bottom: 10px;
   }
 }
