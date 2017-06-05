@@ -24,7 +24,6 @@ var files = {
   img: './app/images/**/*.+(png|jpg|jpeg|gif|svg)'
 };
 
-
 // browser-sync init
 gulp.task('browser-sync', function() {
   browserSync({
@@ -131,8 +130,6 @@ gulp.task('watch', function() {
   gulp.watch(files.html, browserSync.reload);
   gulp.watch(files.js, browserSync.reload);
 });
-
-
 
 // default
 gulp.task('default', function(callback) {

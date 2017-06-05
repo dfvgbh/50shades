@@ -474,7 +474,7 @@ main {
     margin: 20px auto;
 
     #upload-form {
-      width: 50%;
+      width: 45%;
       display: inline-block;
       text-align: left;
 
@@ -528,6 +528,26 @@ main {
           }
         }
       }
+    }
+  }
+
+  .upload-form {
+    &__error-message {
+      display: block;
+      color: tomato;
+      margin: 0 15px 8px;
+      font-size: .85rem;
+    }
+
+    &__image-preview {
+      display: none;
+      width: 100%;
+      height: 260px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0 10px 8px;
+      border-radius: 3px;
     }
   }
 

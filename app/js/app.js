@@ -24,7 +24,7 @@ console, $
       defaultOptions = {
         page: 1,
         lastPage: 0,
-        itemsPerPage: 10,
+        itemsPerPage: 12,
         sort: 'date',
         order: 'DESC',
         search: ''
@@ -193,7 +193,7 @@ console, $
     })
     .done(function(data, status, xhr) {
       lastPage = Math.floor((xhr.
-        getResponseHeader('X-Total-Count') - 1) / 10 + 1);
+        getResponseHeader('X-Total-Count') - 1) / options.itemsPerPage + 1);
     })
     .done(function() {
       if (lastPage < 1) {
@@ -273,6 +273,72 @@ console, $
       });
 
     });
+  }
+
+  function visionRequest(url) {
+      return $.ajax({
+        method: 'POST',
+        url: 'http://localhost:3000/vision',
+        data: {
+          'url': url,
+        }
+      });
+  }
+
+  function debounce(fn, delay) {
+    var timer = null;
+    return function () {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        fn.apply(context, args);
+      }, delay);
+    };
+  }
+
+  function handleUrlInput() {
+    var errorMessage = $('.upload-form__error-message');
+    var imagePreview = $('.upload-form__image-preview');
+    var tagsInput    = $('#upload-form .tags-input');
+    var submitButton = $('.upload-form-submit');
+
+    if (/^[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+\*.~#?&//=]*)?$/
+      .test(this.value)) {
+
+      $(this).css('border', 'solid 1px forestgreen');
+      $(this).css('box-shadow', '0 0 10px forestgreen');
+      imagePreview.css('background-image', 'url(' + this.value + ')');
+      imagePreview.show();
+      errorMessage.text('');
+      tagsInput.val('');
+      submitButton.attr('disabled', true);
+      debounce(() => {
+        visionRequest(this.value)
+          .done(function(data) {
+            var s = '';
+            if (data.adult || data.violence) {
+              imagePreview.hide();
+              errorMessage.text('Adult or violence material is not allowed.');
+              return;
+            }
+            submitButton.attr('disabled', false);
+            s = data.labels.join(', ') + ', ' + tagsInput.val();
+            tagsInput.val(s);
+          })
+      }, 500)();
+
+    } else {
+      if (this.value === '') {
+        $(this).css('border', '1px solid #111');
+        $(this).css('box-shadow', 'none');
+        errorMessage.text('');
+      } else {
+        $(this).css('border', 'solid 1px tomato');
+        $(this).css('box-shadow', '0 0 10px tomato');
+        errorMessage.text('Wrong URL format');
+      }
+      imagePreview.hide();
+    }
   }
 
   /**
@@ -394,16 +460,7 @@ console, $
       }
     });
 
-    $('#upload-form .url-input').on('input', function() {
-      if (/^[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+\*.~#?&//=]*)?$/
-        .test(this.value)) {
-        $(this).css('border', 'solid 1px forestgreen');
-        $(this).css('box-shadow', '0 0 10px forestgreen');
-      } else {
-        $(this).css('border', 'solid 1px tomato');
-        $(this).css('box-shadow', '0 0 10px tomato');
-      }
-    });
+    $('#upload-form .url-input').on('input', debounce(handleUrlInput, 100));
 
     $('#upload-form .tags-input').on('input', function() {
       if (/^([a-zA-Z0-9]+,? ?)*?$/.test(this.value)) {
