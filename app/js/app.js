@@ -275,6 +275,28 @@ console, $
     });
   }
 
+  function login(ev) {
+    ev.preventDefault();
+    var email = $('.email-input').val();
+    var password = $('.password-input').val();
+    window.localStorage.setItem('email', email);
+    window.localStorage.setItem('password', password);
+    document.location.reload();
+  }
+
+  function logout() {
+    window.localStorage.removeItem('email');
+    window.localStorage.removeItem('password');
+  }
+
+  function isLoged() {
+    if (window.localStorage.email) {
+      $('.login-item').hide();
+    } else {
+      $('.logout-item').hide();
+    }
+  }
+
   function visionRequest(url) {
       return $.ajax({
         method: 'POST',
@@ -312,7 +334,7 @@ console, $
       errorMessage.text('');
       tagsInput.val('');
       submitButton.attr('disabled', true);
-      debounce(() => {
+      debounce(function() {
         visionRequest(this.value)
           .done(function(data) {
             var s = '';
@@ -472,6 +494,9 @@ console, $
       }
     });
 
+    $('.login-form-submit').on('click', login);
+    $('.logout-item').on('click', logout);
+    isLoged();
   };
 
 

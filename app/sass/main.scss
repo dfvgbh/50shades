@@ -368,6 +368,15 @@ main {
         background-repeat: no-repeat;
         background-position: 50% 50%;
         background-size: cover;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        transition: filter 400ms linear;
+
+
+        &:hover {
+          -webkit-filter: none;
+          filter: none;
+        }
 
         &:hover .mask {
           opacity: 1;
